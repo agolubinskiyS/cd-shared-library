@@ -18,5 +18,6 @@ class Utilities implements Serializable {
     }
     void post(Map params = [:]) {
       script.sh("echo ${params.name}")
+      script.echo params.name
     }
 }
