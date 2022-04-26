@@ -1,15 +1,6 @@
-// def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
-//     echo "deploying service on: ${baseUrl} with: ${serviceDescriptor} model: ${serviceModel} version: ${serviceVersion} tenant: ${tenantID}"
-
-//     def cct = new cosas.Utilities()
-//     print(cct.get('myscript'))
-
-// }
-
-def call() {
+def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
     def utilities = new cosas.Utilities(this)
 
-    //Utilities utilities = new Utilities
     node {
         stage("Build Docker Image") {
             utilities.get('Mensaje')
