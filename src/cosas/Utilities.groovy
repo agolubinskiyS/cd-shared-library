@@ -15,10 +15,30 @@ class Utilities implements Serializable {
       script.sh("./script.sh $user $password")
     }
     void post(Map params = [:]) {
-      script.sh("echo ${params.name}")
-      script.echo params.name
+      // script.sh("echo ${params.name}")
+      // script.echo params.name
+      script.sh("""echo \
+      CICDCD_SSO_URL=${params.url} \ 
+      CICDCD_SSO_USER_ID=${params.user} \
+      CICDCD_SSO_USER_PASSWORD=${params.password} \
+      CICDCD_SSO_TENANT=${params.password} \
+      publishApplication \
+      --deploymentDescriptor ${params.deploymentDescriptor} \ 
+      --model ${params.model} \
+      --version ${params.version} \
+      --service ${params.service}""")
+    }
     }
     void publishApplication(Map params = [:]) {
-      script.sh('. ./cct_deploy_utils_fat-2.4.0.sh && CICDCD_SSO_URL="https://bootstrap.yankee.labs.stratio.com" CICDCD_SSO_USER_ID="admin" CICDCD_SSO_USER_PASSWORD="1234" CICDCD_SSO_TENANT="s000004" publishApplication --deploymentDescriptor ./request.json --model basic --version 11.0.1 --service grafana-eos')
+      script.sh(""". ./cct_deploy_utils_fat-2.4.0.sh && \
+      CICDCD_SSO_URL="${params.url}" \ 
+      CICDCD_SSO_USER_ID="${params.user}" \
+      CICDCD_SSO_USER_PASSWORD="${params.password}" \
+      CICDCD_SSO_TENANT="${params.password}" \
+      publishApplication \
+      --deploymentDescriptor "${params.deploymentDescriptor}" \ 
+      --model "${params.model}" \
+      --version "${params.version}" \
+      --service "${params.service}"""")
     }
 }
