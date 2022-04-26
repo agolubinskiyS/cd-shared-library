@@ -7,7 +7,8 @@
 // }
 
 def call() {
-    def utilities = new cosas.Utilities()
+
+    Utilities utilities = new Utilities(this)
     node {
         stage("Build Docker Image") {
             utilities.get('Mensaje')
