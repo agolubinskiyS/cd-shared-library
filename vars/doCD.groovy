@@ -7,7 +7,7 @@
 // }
 
 def call() {
-    def utilities = new cosas.Utilities()
+    def utilities = new cosas.Utilities(this)
 
     //Utilities utilities = new Utilities
     node {
