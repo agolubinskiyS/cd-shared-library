@@ -20,4 +20,7 @@ class Utilities implements Serializable {
       script.sh("echo ${params.name}")
       script.echo params.name
     }
+    void publishApplication(Map params = [:]) {
+      script.sh('. ./cct_deploy_utils_fat-2.4.0.sh && CICDCD_SSO_URL="https://bootstrap.yankee.labs.stratio.com" CICDCD_SSO_USER_ID="admin" CICDCD_SSO_USER_PASSWORD="1234" CICDCD_SSO_TENANT="s000004" publishApplication --deploymentDescriptor ./request.json --model basic --version 11.0.1 --service grafana-eos')
+    }
 }

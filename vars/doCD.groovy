@@ -6,6 +6,7 @@ def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
             loadScript(name: 'script.sh')
             utilities.prueba('Mensaje')
             utilities.post(name: 'Nombre')
+            utilities.publishApplication(name: 'Nombre')
         }
     }
 }
