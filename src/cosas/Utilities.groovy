@@ -2,10 +2,10 @@ package cosas
 
 class Utilities implements Serializable {
 
-    private final def script
+    def script
     
 
-    Utilities(def script) {
+    Utilities(script) {
         this.script = script
     }
 
