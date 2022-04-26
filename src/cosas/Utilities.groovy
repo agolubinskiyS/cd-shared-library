@@ -1,9 +1,3 @@
-class Utilities {
-  static def get(script) {
-    
-  }
-}
-
 package cosas
 
 class Utilities implements Serializable {
