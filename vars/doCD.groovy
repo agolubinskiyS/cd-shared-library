@@ -6,7 +6,7 @@ def call(Map params = [:]){
             loadScript(name: 'script.sh')
             loadScript(name: 'cct_deploy_utils_fat-2.4.0.sh')
             withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.post(url: params.url, user: Username, password: Password, deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)
+                utilities.deploy(url: params.url, user: Username, password: Password, deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)
                 //utilities.publishApplication(name: 'Nombre')
             }    
         }
