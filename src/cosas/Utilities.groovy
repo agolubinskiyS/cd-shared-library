@@ -12,6 +12,7 @@ class Utilities implements Serializable {
 
     void get(String msg) {
       script.echo msg
+      script.sh("pwd")
       script.sh("./resources/script.sh")
     }
 }
