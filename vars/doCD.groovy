@@ -8,7 +8,7 @@ def call(Map params = [:]){
             // utilities.prueba('Mensaje')
             // utilities.post(name: 'Nombre')
             withCredentials([usernamePassword(credentialsId:'c5295ce1-59e7-4849-b18a-9f64a05e4ef2', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.post(url: 'url', user: 'usuario', password: 'contraseña', deploymentDescriptor: 'descriptor', model: 'modelo', version: '22', service: 'servicio')
+                utilities.post(url: 'url', user: Username, password: 'contraseña', deploymentDescriptor: 'descriptor', model: 'modelo', version: '22', service: 'servicio')
                 //utilities.publishApplication(name: 'Nombre')
             }    
         }
