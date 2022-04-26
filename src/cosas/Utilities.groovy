@@ -10,8 +10,8 @@ class Utilities implements Serializable {
         this.script = script
     }
 
-    void get() {
-      script.echo "hola"
+    void get(String msg) {
+      script.echo msg
       //script.sh("echo algo")
       // this.log.debug ("isReleaseActio")
       //this.script.sh("echo algo")

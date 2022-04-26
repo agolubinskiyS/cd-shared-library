@@ -10,7 +10,7 @@ def call() {
     def utilities = new cosas.Utilities()
     node {
         stage("Build Docker Image") {
-            utilities.get()
+            utilities.get('Mensaje')
         }
     }
 }
