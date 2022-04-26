@@ -16,4 +16,10 @@ class Utilities implements Serializable {
       script.sh("ls")
       script.sh("./resources/script.sh")
     }
+    void post(String msg) {
+      script.echo msg
+      script.sh("pwd")
+      script.sh("ls")
+      script.sh("./resources/script.sh")
+    }
 }
