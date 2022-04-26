@@ -8,7 +8,7 @@ class Utilities implements Serializable {
         this.script = script
     }
 
-    def checkout(String repo) {
+    def get(String repo) {
         this.script.sh "echo GET:"
     }
 }
