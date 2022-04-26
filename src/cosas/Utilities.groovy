@@ -15,6 +15,6 @@ class Utilities implements Serializable {
       // this.log.debug ("isReleaseActio")
       //this.script.sh("echo algo")
       //this.script.sh(script: "echo algo", returnStdout: true).trim()
-      return "repo"
+      return this
     }
 }
