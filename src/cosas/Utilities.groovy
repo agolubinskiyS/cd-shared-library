@@ -28,7 +28,6 @@ class Utilities implements Serializable {
       --version ${params.version} \
       --service ${params.service}""")
     }
-    }
     void publishApplication(Map params = [:]) {
       script.sh(""". ./cct_deploy_utils_fat-2.4.0.sh && \
       CICDCD_SSO_URL="${params.url}" \ 
@@ -39,6 +38,6 @@ class Utilities implements Serializable {
       --deploymentDescriptor "${params.deploymentDescriptor}" \ 
       --model "${params.model}" \
       --version "${params.version}" \
-      --service "${params.service}"""")
+      --service "${params.service}" """)
     }
 }
