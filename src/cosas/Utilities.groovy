@@ -5,7 +5,7 @@ class Utilities implements Serializable {
     private final def script
     
 
-    Utilities(script) {
+    Utilities(def script) {
         this.script = script
     }
 
