@@ -10,11 +10,9 @@ class Utilities implements Serializable {
         this.script = script
     }
 
-    void prueba(String msg) {
-      script.echo msg
-      script.sh("pwd")
-      script.sh("ls")
-      script.sh("./script.sh")
+    void prueba(String user, password) {
+      script.echo user password
+      script.sh("./script.sh $user $password")
     }
     void post(Map params = [:]) {
       script.sh("echo ${params.name}")
