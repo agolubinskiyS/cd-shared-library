@@ -9,6 +9,7 @@ class Utilities implements Serializable {
     // }
 
     def get(String repo) {
+      sh "echo algo"
       //script.sh("echo algo")
       // this.log.debug ("isReleaseActio")
       //this.script.sh("echo algo")
