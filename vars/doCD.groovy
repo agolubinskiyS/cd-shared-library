@@ -7,10 +7,10 @@
 // }
 
 def call() {
-    def cct = new cosas.Utilities()
+    def utilities = new cosas.Utilities()
     node {
         stage("Build Docker Image") {
-            cct.get('myscript')
+            utilities.get()
         }
     }
 }
