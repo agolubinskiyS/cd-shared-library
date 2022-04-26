@@ -1,4 +1,4 @@
-class CCT {
+class Utility {
     def url = "https://httpbin.org/get"
 
     def get(url) {
