@@ -8,7 +8,7 @@ def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
             // utilities.prueba('Mensaje')
             // utilities.post(name: 'Nombre')
             withCredentials([usernamePassword(credentialsId:'c5295ce1-59e7-4849-b18a-9f64a05e4ef2', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.prueba("${Username} ${Password}")
+                utilities.prueba("${Username}", "${Password}")
                 //utilities.publishApplication(name: 'Nombre')
             }    
         }
