@@ -21,7 +21,7 @@ class Utilities implements Serializable {
       CICDCD_SSO_URL=$params.url \
       CICDCD_SSO_USER_ID=$params.user \
       CICDCD_SSO_USER_PASSWORD=$params.password \
-      CICDCD_SSO_TENANT=$params.password \
+      CICDCD_SSO_TENANT=$params.tenant \
       publishApplication \
       deploymentDescriptor $params.deploymentDescriptor \
       model $params.model \
