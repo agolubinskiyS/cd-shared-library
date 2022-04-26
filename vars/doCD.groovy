@@ -10,7 +10,12 @@ def call(Map params = [:]){
             if (exists) {
                 echo 'Yes'
             } else {
-                echo 'No'
+                if (params.descriptor != null) {
+                    echo 'HAY VARIABLE'
+                }
+                else {
+                    echo 'NO HAY VARIABLE'    
+                }
             }
 
 
