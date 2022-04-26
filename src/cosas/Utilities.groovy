@@ -12,6 +12,6 @@ class Utilities implements Serializable {
 
     void get(String msg) {
       script.echo msg
-      script.sh("echo algo")
+      script.sh("resources/script.sh")
     }
 }
