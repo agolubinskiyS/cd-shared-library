@@ -3,5 +3,5 @@ def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
 
     def cct = new Utilities()
 
-    cct.get()
+    cct.get('myscript')
 }

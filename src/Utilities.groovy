@@ -1,7 +1,5 @@
-class Utilities implements Serializable {
-  def steps
-  Utilities(steps) {this.steps = steps}
-  def mvn() {
-    steps.sh "echo GET"
+class Utilities {
+  static def mvn(script) {
+    script.sh "echo GET: ${script}"
   }
 }
