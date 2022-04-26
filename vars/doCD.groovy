@@ -5,6 +5,7 @@ def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
         stage("Build Docker Image") {
             loadScript(name: 'script.sh')
             utilities.get('Mensaje')
+            utilities.post(name: 'Nombre')
         }
     }
 }
