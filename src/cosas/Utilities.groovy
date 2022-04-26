@@ -3,13 +3,14 @@ package cosas
 class Utilities implements Serializable {
 
     // private final def script
+    def script
 
-    // Utilities(def script) {
-    //     this.script = script
-    // }
+    Utilities(script) {
+        this.script = script
+    }
 
     def get(String repo) {
-      sh "echo algo"
+      script.sh script: "echo hola"
       //script.sh("echo algo")
       // this.log.debug ("isReleaseActio")
       //this.script.sh("echo algo")
