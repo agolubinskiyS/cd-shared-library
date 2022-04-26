@@ -3,6 +3,6 @@ def call(baseUrl, serviceDescriptor, serviceModel, serviceVersion, tenantID){
 
         def cct = new cosas.Utilities()
 
-        cct.get('myscript')
+        cct.gets('myscript')
 
 }
