@@ -1,5 +1,5 @@
 class Utilities {
-  static def mvn(script) {
+  static def get(script) {
     script.sh "echo GET: ${script}"
   }
 }
