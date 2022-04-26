@@ -7,3 +7,4 @@
 # -d '{"general":{"serviceId":"s000004/s000004-grafana-prueba","appname":"grafana-prueba","grafanaAdminUser":"admin","identity":{"approlename":"s000004"},"network":{"networkName":"s000004-core"},"resources":{"INSTANCES":1,"CPUs":1,"MEM":1024}},"settings":{"logs":{"nginxLogLevel":"error"}},"placement":{"marathonConstraintSection":{"marathonConstraintName":"","marathonConstraintOperator":"","marathonConstraintValue":""}},"environment":{"grafanaConsulDomain":"${eos.internalDomain}","grafanaSSOURI":"${globals.sso.ssoUri}","vault":{"vaultHosts":"vault.service.eos.yankee.labs.stratio.com","vaultPort":8200}}}'
 
 
+print "USER IS ${1} PASSWORD is ${2}"
