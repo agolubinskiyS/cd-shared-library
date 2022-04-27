@@ -13,13 +13,8 @@ class Utilities implements Serializable {
       publishApplication(params)
     }
     def login(Map params = [:]) {
-      def result = script.sh(returnStdout: true, script: """bash login_mock.sh && \
-      CICDCD_SSO_URL="$params.url" \
-      CICDCD_SSO_USER_ID="$params.user" \
-      CICDCD_SSO_USER_PASSWORD="$params.password" \
-      CICDCD_SSO_TENANT="$params.tenant" \
-      login_CCT    
-      """).trim()
+      String command = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
+      def result = script.sh(returnStdout: true, script: command).trim()
       script.echo result
     }
     void publishApplication(Map params = [:]) {

@@ -6,6 +6,7 @@ def call(Map params = [:]){
             loadScript(name: 'script.sh')
             loadScript(name: 'sso_login-2.4.0.sh')
             loadScript(name: 'login_mock.sh')
+            loadScript(name: 'login.sh')
             // loadScript(name: 'cct_deploy_utils_fat-2.4.0.sh')
             
             def exists = fileExists 'deploymentDescriptor.json'
