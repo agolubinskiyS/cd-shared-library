@@ -21,19 +21,23 @@ class Utilities implements Serializable {
       """
       this.params = params
     }
+    static boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
+    
     void prueba(String Username, String Password) {
       script.echo(Username, Password)
     }
+    
     void login(String Username, String Password) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
-      command = command + """cookie="$cookie" """
+      isNullOrEmpty(cookie) ? command = command + """cookie="$cookie" """ : error 'Login fail'
     }
+    
     void publishApplication(Map params = [:]) {
-      script.echo(command)
-      // script.sh(returnStdout: true, script: command + " publishApplication")
+      script.sh(returnStdout: true, script: command + " publishApplication")
     }
+    
     void upgradeApplication(Map params = [:]) {
       command = command + """serviceId="$params.serviceId" """
       script.sh(returnStdout: true, script: command + " upgradeApplication")
