@@ -3,9 +3,9 @@ package tools
 class Utilities implements Serializable {
 
     def script
-    String operation
+    Map params = [:]
 
-    Utilities(script, operation) {
+    Utilities(script, params) {
       this.script = script
       // String operation = """. ./cct-api.sh && \
       // CICDCD_SSO_URL="$params.url" \
@@ -18,7 +18,7 @@ class Utilities implements Serializable {
       // service="$params.service" \
       // cookie="$cookie" 
       // """
-      this.operation = operation
+      this.params = params
     }
     void prueba() {
       script.echo(operation)
@@ -35,6 +35,6 @@ class Utilities implements Serializable {
       return result
     }
     void publishApplication(String cookie) {
-      script.sh(returnStdout: true, script: operation+"publishApplication")
+      script.sh(returnStdout: true, script: params.operation+"publishApplication")
     }
 }
