@@ -13,6 +13,11 @@ class Utilities implements Serializable {
       . ./cct-api.sh &&
       CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
+      deploymentDescriptor="$params.deploymentDescriptor"
+      model="$params.model"
+      version="$params.version"
+      service="$params.service"
+      cookie="$cookie"  
       """
       this.params = params
     }
@@ -22,14 +27,10 @@ class Utilities implements Serializable {
       cookie = result.substring(0, result.indexOf(';')) 
     }
     void publishApplication(Map params = [:]) {
-      command = command + 
-      """
-      deploymentDescriptor="$params.deploymentDescriptor"
-      model="$params.model"
-      version="$params.version"
-      service="$params.service"
-      cookie="$cookie"         
-      """
       script.sh(returnStdout: true, script: command + " publishApplication")
+    }
+    void publishApplication(Map params = [:]) {
+      command = command + """serviceId=$params.serviceId"""""
+      script.sh(returnStdout: true, script: command + " updateApplication")
     }
 }
