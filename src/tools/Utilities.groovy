@@ -28,7 +28,7 @@ class Utilities implements Serializable {
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
       cookie = null
-      if (isNullOrEmpty(cookie)) { error 'Login fail' }
+      if (isNullOrEmpty(cookie)) { throw new RuntimeException("Login failed") }
       command = command + """cookie="$cookie" """
     }
     
