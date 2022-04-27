@@ -5,11 +5,8 @@
 login_CCT() {
     echo "CICDCD_SSO_URL = $CICDCD_SSO_URL"
     echo "CICDCD_SSO_TENANT = $CICDCD_SSO_TENANT"
-    echo "deploymentDescriptor = $deploymentDescriptor"
-    echo "model = $model"
-    echo "version = $version"
-    echo "service = $service"
-    echo "cookie = $cookie"
+    echo "CICDCD_SSO_USER_PASSWORD = $CICDCD_SSO_USER_PASSWORD"
+    echo "CICDCD_SSO_USER_ID = $CICDCD_SSO_USER_ID"
 
     local cookie="dcos-acs-auth-cookie=eyJhbGciOiJIUzI1NiIsImtpZCI6InNlY3JldCIsInR5cCI6IkpXVCJ9.eyJjbiI6ImFkbWluIiwiZXhwIjoxNjUxMDc0MjE3LCJncm91cHMiOlsiYWRtaW4iLCJzdHJhdGlvIiwibWFuYWdlcl9pbnN0YWxsZXIiLCJtYW5hZ2VyX2FkbWluIiwiczAwMDAwMi1TdXBlckFkbWluLWdvdmVybmFuY2UiLCJzMDAwMDAyLWdvdmVybmFuY2Utc3VwZXItYWRtaW5zIiwiczAwMDAwMy1TdXBlckFkbWluLWdvdmVybmFuY2UiLCJzMDAwMDAzLWdvdmVybmFuY2Utc3VwZXItYWRtaW5zIiwiczAwMDAwMy1kaXNjb3ZlcnktYWRtaW4iLCJtZG1fYWRtaW4iXSwibWFpbCI6ImFkbWluQHlhbmtlZS5sYWJzLnN0cmF0aW8uY29tIiwidGVuYW50IjoiTk9ORSIsInVpZCI6ImFkbWluIn0._LICiJicpmuGuHKbsJv_zHQcJG2bOQk5pSje08xEmn4;=node035nfj6z5qu1617fqhm0cnptyz15695.node0;;"
     echo $cookie
