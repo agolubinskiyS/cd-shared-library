@@ -3,6 +3,7 @@ package tools
 class Utilities implements Serializable {
 
     def script
+    String cookie
     String command
     Map params = [:]
 
@@ -25,11 +26,12 @@ class Utilities implements Serializable {
     public login(Map params = [:]) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
-      result = result.substring(0, result.indexOf(';')) 
-      return result
+      cookie = result.substring(0, result.indexOf(';')) 
+      return cookie
     }
-    void publishApplication(String cookie) {
-      script.sh(returnStdout: true, script: operation+"publishApplication")
+    void publishApplication() {
+      script.echo(cookie)
+      // script.sh(returnStdout: true, script: operation+"publishApplication")
       // operation = """. ./cct-api.sh && \
       // CICDCD_SSO_URL="$params.url" \
       // CICDCD_SSO_USER_ID="$params.user" \
