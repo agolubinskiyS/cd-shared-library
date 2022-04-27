@@ -21,7 +21,7 @@ class Utilities implements Serializable {
       this.params = params
     }
     void prueba() {
-      script.echo(operation)
+      script.echo(params.tenant)
     }
 
     void deploy(Map params = [:]) {
@@ -35,6 +35,6 @@ class Utilities implements Serializable {
       return result
     }
     void publishApplication(String cookie) {
-      script.sh(returnStdout: true, script: params.tenant+"publishApplication")
+      script.sh(returnStdout: true, script: operation+"publishApplication")
     }
 }
