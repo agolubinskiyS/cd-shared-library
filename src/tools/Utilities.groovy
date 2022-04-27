@@ -29,6 +29,7 @@ class Utilities implements Serializable {
       version="$params.version" \
       service="$params.service" \
       cookie="$cookie"
+      publishApplication
       """
       script.sh(returnStdout: true, script: operation)
     }
