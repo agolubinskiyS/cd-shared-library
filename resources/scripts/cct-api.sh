@@ -35,7 +35,7 @@ publishApplication() {
 
 upgradeApplication() {
    status_code=$(curl --write-out %{http_code} --silent --output /dev/null -k \
-   -X PUT $CICDCD_SSO_URL/service/cct-deploy-api/deploy/$service/$model/$version/schema?tenantId=$CICDCD_SSO_TENANT \
+   -X PUT $CICDCD_SSO_URL/service/cct-deploy-api/deploy/$service/$model/$version/$serviceId \
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
