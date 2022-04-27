@@ -16,7 +16,7 @@ class Utilities implements Serializable {
       def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim()
       script.echo result
-      script.sh("printenv COOKIE_DCOS_ACS_AUTH")   
+      script.sh("printenv")   
     }
     void publishApplication(Map params = [:]) {
       script.sh("""./script.sh \
