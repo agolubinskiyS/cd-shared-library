@@ -20,7 +20,7 @@ class Utilities implements Serializable {
       CICDCD_SSO_TENANT="$params.tenant"     
       """)
       result = "cra"
-      print(result)
+      script.echo result
     }
     void publishApplication(Map params = [:]) {
       script.sh("""./script.sh \
