@@ -9,8 +9,7 @@ class Utilities implements Serializable {
     }
 
     void deploy(Map params = [:]) {
-      login(params)
-      publishApplication(params)
+      publishApplication(params, login(params))
     }
     public login(Map params = [:]) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
@@ -18,8 +17,8 @@ class Utilities implements Serializable {
       cookie = cookie.substring(0, cookie.indexOf(';')) 
       return cookie
     }
-    void publishApplication(Map params = [:]) {
-      script.echo this.cookie
+    void publishApplication(Map params = [:], String cookie) {
+      script.echo cookie
       // script.sh("""./script.sh \
       // CICDCD_SSO_URL="$params.url" \
       // CICDCD_SSO_USER_ID="$params.user" \
