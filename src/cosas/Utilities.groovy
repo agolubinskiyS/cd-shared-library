@@ -17,7 +17,7 @@ class Utilities implements Serializable {
       CICDCD_SSO_URL="$params.url" \
       CICDCD_SSO_USER_ID="$params.user" \
       CICDCD_SSO_USER_PASSWORD="$params.password" \
-      CICDCD_SSO_TENANT="$params.tenant" \    
+      CICDCD_SSO_TENANT="$params.tenant"     
       """)     
     }
     void publishApplication(Map params = [:]) {
