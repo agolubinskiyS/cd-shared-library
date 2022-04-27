@@ -24,7 +24,7 @@ class Utilities implements Serializable {
     void publishApplication(Map params = [:]) {
       command = command + 
       """
-      deploymentDescriptor="$params.deploymentDescriptor
+      deploymentDescriptor="$params.deploymentDescriptor"
       model="$params.model"
       version="$params.version"
       service="$params.service"
