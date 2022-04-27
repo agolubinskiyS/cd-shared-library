@@ -4,6 +4,7 @@ def call(Map params = [:]){
     node {
         stage("Deploy Service on EOS") {
             loadScript(name: 'script.sh')
+            loadScript(name: 'sso_login-2.4.0.sh')
             // loadScript(name: 'cct_deploy_utils_fat-2.4.0.sh')
             
             def exists = fileExists 'deploymentDescriptor.json'
