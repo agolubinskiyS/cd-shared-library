@@ -30,6 +30,8 @@ class Utilities implements Serializable {
       service="$params.service" \
       cookie="$cookie"         
       """
-      script.sh(returnStdout: true, script: command+" publishApplication")
+      def script = command + " publishApplication"
+      script.echo(script)
+      script.sh(returnStdout: true, script: command + " publishApplication")
     }
 }
