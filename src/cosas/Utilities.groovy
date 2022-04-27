@@ -8,17 +8,17 @@ class Utilities implements Serializable {
         this.script = script
     }
 
-    void deploy(Map params = [:]) {
+    static void deploy(Map params = [:]) {
       login(params)
       publishApplication(params)
     }
-    def login(Map params = [:]) {
+    public static login(Map params = [:]) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim()
       script.echo result
       script.sh("printenv")   
     }
-    void publishApplication(Map params = [:]) {
+    static void publishApplication(Map params = [:]) {
       script.sh("""./script.sh \
       CICDCD_SSO_URL="$params.url" \
       CICDCD_SSO_USER_ID="$params.user" \
