@@ -22,11 +22,7 @@ class Utilities implements Serializable {
       this.params = params
     }
     static boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
-    
-    void prueba(String Username, String Password) {
-      script.echo(Username, Password)
-    }
-    
+
     void login(String Username, String Password) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
