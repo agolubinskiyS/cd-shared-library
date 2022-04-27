@@ -3,25 +3,19 @@ package tools
 class Utilities implements Serializable {
 
     def script
+    String operation
     Map params = [:]
 
     Utilities(script, params) {
       this.script = script
-      // String operation = """. ./cct-api.sh && \
-      // CICDCD_SSO_URL="$params.url" \
-      // CICDCD_SSO_USER_ID="$params.user" \
-      // CICDCD_SSO_USER_PASSWORD="$params.password" \
-      // CICDCD_SSO_TENANT="$params.tenant" \
-      // deploymentDescriptor="$params.deploymentDescriptor" \
-      // model="$params.model" \
-      // version="$params.version" \
-      // service="$params.service" \
-      // cookie="$cookie" 
-      // """
+      command = """
+      CICDCD_SSO_URL="$params.url" \
+      CICDCD_SSO_TENANT="$params.tenant"
+      """
       this.params = params
     }
     void prueba() {
-      script.echo(params.tenant)
+      script.echo(command)
     }
 
     void deploy(Map params = [:]) {
@@ -36,5 +30,16 @@ class Utilities implements Serializable {
     }
     void publishApplication(String cookie) {
       script.sh(returnStdout: true, script: operation+"publishApplication")
+      // operation = """. ./cct-api.sh && \
+      // CICDCD_SSO_URL="$params.url" \
+      // CICDCD_SSO_USER_ID="$params.user" \
+      // CICDCD_SSO_USER_PASSWORD="$params.password" \
+      // CICDCD_SSO_TENANT="$params.tenant" \
+      // deploymentDescriptor="$params.deploymentDescriptor" \
+      // model="$params.model" \
+      // version="$params.version" \
+      // service="$params.service" \
+      // cookie="$cookie" 
+      // """
     }
 }
