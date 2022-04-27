@@ -31,7 +31,8 @@ class Utilities implements Serializable {
       cookie = result.substring(0, result.indexOf(';')) 
     }
     void publishApplication(Map params = [:]) {
-      script.sh(returnStdout: true, script: command + " publishApplication")
+      script.echo(command)
+      // script.sh(returnStdout: true, script: command + " publishApplication")
     }
     void upgradeApplication(Map params = [:]) {
       command = command + """serviceId="$params.serviceId" """
