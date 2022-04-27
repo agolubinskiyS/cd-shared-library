@@ -2,10 +2,10 @@ def call(Map params = [:]){
     def utilities = new tools.Utilities(this)
     def scripts = ['publish.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     def descriptor = ''
-    
+
     node {
         stage("Deploy Service on EOS") {
-            loadScript(names: scripts)
+            loadScript(scripts)
 
             def exists = fileExists 'deploymentDescriptor.json'
             if (exists) {
