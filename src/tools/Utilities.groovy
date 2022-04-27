@@ -4,7 +4,7 @@ class Utilities implements Serializable {
 
     def script
     
-    Utilities(script, operation) {
+    Utilities(script, String operation) {
       this.script = script
       // String operation = """. ./cct-api.sh && \
       // CICDCD_SSO_URL="$params.url" \
