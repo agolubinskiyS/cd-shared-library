@@ -1,6 +1,6 @@
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this)
-    def scripts = ['publish.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
+    def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     def descriptor = ''
 
     node {
