@@ -10,9 +10,9 @@ class Utilities implements Serializable {
     Utilities(script, params) {
       this.script = script
       command = """
-      . ./cct-api.sh && \
-      CICDCD_SSO_URL="$params.url" \
-      CICDCD_SSO_TENANT="$params.tenant" \
+      . ./cct-api.sh &&
+      CICDCD_SSO_URL="$params.url"
+      CICDCD_SSO_TENANT="$params.tenant"
       """
       this.params = params
     }
@@ -24,10 +24,10 @@ class Utilities implements Serializable {
     void publishApplication(Map params = [:]) {
       command = command + 
       """
-      deploymentDescriptor="$params.deploymentDescriptor \
-      model="$params.model" \
-      version="$params.version" \
-      service="$params.service" \
+      deploymentDescriptor="$params.deploymentDescriptor
+      model="$params.model"
+      version="$params.version"
+      service="$params.service"
       cookie="$cookie"         
       """
       command = command + " publishApplication"
