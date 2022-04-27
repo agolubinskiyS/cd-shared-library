@@ -3,7 +3,8 @@ package tools
 class Utilities implements Serializable {
 
     def script
-    
+    String operation
+
     Utilities(script, operation) {
       this.script = script
       // String operation = """. ./cct-api.sh && \
