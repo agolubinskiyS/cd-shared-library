@@ -5,7 +5,7 @@ def call(Map params = [:]){
 
     node {
         stage("Deploy Service on EOS") {
-            loadScript(scripts)
+            loadScripts(scripts)
 
             def exists = fileExists 'deploymentDescriptor.json'
             if (exists) {
