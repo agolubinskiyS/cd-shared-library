@@ -31,7 +31,7 @@ class Utilities implements Serializable {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       cookie = script.sh(returnStdout: true, script: operation).trim().substring(21)
       // cookie = result.substring(0, result.indexOf(';')) 
-      isNullOrEmpty(cookie) ?  cookie.substring(0, result.indexOf(';')) : error 'Login fail'
+      isNullOrEmpty(cookie) ? cookie.substring(0, result.indexOf(';')) : script.echo('nul')
       comand = command + """cookie="$cookie" """
     }
     
