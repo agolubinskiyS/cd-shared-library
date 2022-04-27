@@ -13,7 +13,7 @@ class Utilities implements Serializable {
       publishApplication(params)
     }
     def login(Map params = [:]) {
-      def result = script.sh(""". ./sso_login-2.4.0.sh && \
+      def result = script.sh("""bash sso_login-2.4.0.sh && \
       CICDCD_SSO_URL="$params.url" \
       CICDCD_SSO_USER_ID="$params.user" \
       CICDCD_SSO_USER_PASSWORD="$params.password" \
