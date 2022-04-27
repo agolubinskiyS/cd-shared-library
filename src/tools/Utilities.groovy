@@ -32,6 +32,7 @@ class Utilities implements Serializable {
       cookie = script.sh(returnStdout: true, script: operation).trim().substring(21)
       // cookie = result.substring(0, result.indexOf(';')) 
       isNullOrEmpty(cookie) ? cookie.substring(0, result.indexOf(';')) : script.echo('nul')
+      script.echo(cookie)
       comand = command + """cookie="$cookie" """
     }
     
