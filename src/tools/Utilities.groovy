@@ -23,10 +23,11 @@ class Utilities implements Serializable {
       String cookie = login(params)
       publishApplication()
     }
-    public login(Map params = [:]) {
-      def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
+    public login(String Password, String Username) {
+      def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
+      script.echo(cookie)
       return cookie
     }
     void publishApplication() {

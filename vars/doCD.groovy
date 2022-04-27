@@ -18,7 +18,8 @@ def call(Map params = [:]){
             }
 
             withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.deploy(url: params.url, user: Username, password: Password, tenant: params.tenant, deploymentDescriptor: descriptor, model: params.model, version: params.version, service: params.service)
+                // utilities.deploy(url: params.url, user: Username, password: Password, tenant: params.tenant, deploymentDescriptor: descriptor, model: params.model, version: params.version, service: params.service)
+                utilities.login(Password, Username)
                 //utilities.publishApplication(url: params.url, user: Username, password: Password, tenant: params.tenant, deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)
             //    utilities.prueba()
             }    
