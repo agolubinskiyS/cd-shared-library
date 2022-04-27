@@ -18,7 +18,7 @@ def call(Map params = [:]){
             }
 
             withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.login(Password, Username)
+                utilities.login(Username, Password)
             }
             utilities.publishApplication(deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)    
         }

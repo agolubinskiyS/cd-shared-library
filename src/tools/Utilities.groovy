@@ -1,4 +1,5 @@
 package tools
+// package src.tools
 
 class Utilities implements Serializable {
 
@@ -21,7 +22,7 @@ class Utilities implements Serializable {
       """
       this.params = params
     }
-    void login(String Password, String Username) {
+    void login(String Username, String Password) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
