@@ -16,6 +16,7 @@ echo "deploymentDescriptor = $deploymentDescriptor"
 echo "model = $model"
 echo "version = $version"
 echo "service = $service"
+echo "cookie = $cookie"
 
 # status_code=$(curl --write-out %{http_code} --silent --output /dev/null -k \
 # -X POST $CICDCD_SSO_URL/service/cct-deploy-api/deploy/$service/$model/$version/schema?tenantId=$CICDCD_SSO_TENANT \

@@ -18,15 +18,16 @@ class Utilities implements Serializable {
       return cookie
     }
     void publishApplication(Map params = [:], String cookie) {
-      script.echo cookie
-      // script.sh("""./script.sh \
-      // CICDCD_SSO_URL="$params.url" \
-      // CICDCD_SSO_USER_ID="$params.user" \
-      // CICDCD_SSO_USER_PASSWORD="$params.password" \
-      // CICDCD_SSO_TENANT="$params.tenant" \
-      // deploymentDescriptor="$params.deploymentDescriptor" \
-      // model="$params.model" \
-      // version="$params.version" \
-      // service="$params.service" """)
+      script.sh("""./script.sh \
+      CICDCD_SSO_URL="$params.url" \
+      CICDCD_SSO_USER_ID="$params.user" \
+      CICDCD_SSO_USER_PASSWORD="$params.password" \
+      CICDCD_SSO_TENANT="$params.tenant" \
+      deploymentDescriptor="$params.deploymentDescriptor" \
+      model="$params.model" \
+      version="$params.version" \
+      service="$params.service" \
+      cookie="$cookie"
+      """)
     }
 }
