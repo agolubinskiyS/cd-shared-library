@@ -4,8 +4,22 @@ class Utilities implements Serializable {
 
     def script
     
-    Utilities(script) {
-        this.script = script
+    Utilities(script, Map params = [:]) {
+      this.script = script
+      String operation = """. ./cct-api.sh && \
+      CICDCD_SSO_URL="$params.url" \
+      CICDCD_SSO_USER_ID="$params.user" \
+      CICDCD_SSO_USER_PASSWORD="$params.password" \
+      CICDCD_SSO_TENANT="$params.tenant" \
+      deploymentDescriptor="$params.deploymentDescriptor" \
+      model="$params.model" \
+      version="$params.version" \
+      service="$params.service" \
+      cookie="$cookie" 
+      """
+    }
+    void prueba() {
+      script.echo(operation)
     }
 
     void deploy(Map params = [:]) {
@@ -18,19 +32,7 @@ class Utilities implements Serializable {
       result = result.substring(0, result.indexOf(';')) 
       return result
     }
-    void publishApplication(Map params = [:], String cookie) {
-      String operation = """. ./cct-api.sh && \
-      CICDCD_SSO_URL="$params.url" \
-      CICDCD_SSO_USER_ID="$params.user" \
-      CICDCD_SSO_USER_PASSWORD="$params.password" \
-      CICDCD_SSO_TENANT="$params.tenant" \
-      deploymentDescriptor="$params.deploymentDescriptor" \
-      model="$params.model" \
-      version="$params.version" \
-      service="$params.service" \
-      cookie="$cookie"
-      publishApplication
-      """
-      script.sh(returnStdout: true, script: operation)
+    void publishApplication(String cookie) {
+      script.sh(returnStdout: true, script: operation+"publishApplication")
     }
 }
