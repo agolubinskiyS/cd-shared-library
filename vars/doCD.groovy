@@ -1,14 +1,12 @@
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this)
+    def scripts = ['publish.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     def descriptor = ''
+    
     node {
         stage("Deploy Service on EOS") {
-            loadScript(name: 'script.sh')
-            loadScript(name: 'sso_login-2.4.0.sh')
-            loadScript(name: 'login_mock.sh')
-            loadScript(name: 'login.sh')
-            // loadScript(name: 'cct_deploy_utils_fat-2.4.0.sh')
-            
+            loadScript(names: scripts)
+
             def exists = fileExists 'deploymentDescriptor.json'
             if (exists) {
                 descriptor = readFile(file:'deploymentDescriptor.json')

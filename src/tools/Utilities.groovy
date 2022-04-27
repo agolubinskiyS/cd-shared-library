@@ -18,7 +18,7 @@ class Utilities implements Serializable {
       return cookie
     }
     void publishApplication(Map params = [:], String cookie) {
-      script.sh("""./script.sh \
+      script.sh("""./publish.sh \
       CICDCD_SSO_URL="$params.url" \
       CICDCD_SSO_USER_ID="$params.user" \
       CICDCD_SSO_USER_PASSWORD="$params.password" \

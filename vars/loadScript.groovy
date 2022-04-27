@@ -1,6 +1,8 @@
 
-def call(Map config = [:]) { 
-  def scriptcontents = libraryResource "scripts/${config.name}"    
-  writeFile file: "${config.name}", text: scriptcontents 
-  sh "chmod a+x ./${config.name}"
+def call(List scripts) {
+  for (item in scripts) {
+    def scriptcontents = libraryResource "scripts/${item}"    
+    writeFile file: "${item}", text: scriptcontents 
+    sh "chmod a+x ./${item}"
+  }
 } 
