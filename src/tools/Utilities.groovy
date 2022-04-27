@@ -10,7 +10,7 @@ class Utilities implements Serializable {
     Utilities(script, params) {
       this.script = script
       command = """
-      CICDCD_SSO_URL="$params.url" \
+      CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
       """
       this.params = params
@@ -23,14 +23,21 @@ class Utilities implements Serializable {
       String cookie = login(params)
       publishApplication()
     }
-    public login(String Password, String Username) {
+    void login(String Password, String Username) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
-      return cookie
     }
-    void publishApplication() {
-      script.echo(cookie)
+    void publishApplication(Map params = [:]) {
+      command = command + 
+      """
+      deploymentDescriptor="$params.deploymentDescriptor \
+      model="$params.model" \
+      version="$params.version" \
+      service="$params.service" \
+      cookie="$cookie"         
+      """
+      script.echo(command)
       // script.sh(returnStdout: true, script: operation+"publishApplication")
       // operation = """. ./cct-api.sh && \
       // CICDCD_SSO_URL="$params.url" \
