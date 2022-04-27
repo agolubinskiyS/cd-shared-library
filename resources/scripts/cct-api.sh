@@ -18,7 +18,6 @@ publishApplication() {
    echo "version = $version"
    echo "service = $service"
    echo "cookie = $cookie"
-   echo "PUBLISH"
    # status_code=$(curl --write-out %{http_code} --silent --output /dev/null -k \
    # -X POST $CICDCD_SSO_URL/service/cct-deploy-api/deploy/$service/$model/$version/schema?tenantId=$CICDCD_SSO_TENANT \
    # -H "Cookie: dcos-acs-auth-cookie=$cookie" \
@@ -34,3 +33,18 @@ publishApplication() {
    # fi
 }
 
+updateApplication() {
+   # status_code=$(curl --write-out %{http_code} --silent --output /dev/null -k \
+   # -X POST $CICDCD_SSO_URL/service/cct-deploy-api/deploy/$service/$model/$version/schema?tenantId=$CICDCD_SSO_TENANT \
+   # -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+   # -H 'Content-Type: application/json' \
+   # -H 'accept: */*' \
+   # -d "$deploymentDescriptor")
+
+   # if [[ "$status_code" -ne 202 ]] ; then
+   # echo "Error: Deployment status code: $status_code"
+   # else
+   # echo "OK! Deployment started"
+   # exit 0
+   # fi
+}
