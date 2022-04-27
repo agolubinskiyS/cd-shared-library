@@ -13,8 +13,8 @@ class Utilities implements Serializable {
       publishApplication(params)
     }
     def login(Map params = [:]) {
-      def command = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
-      def result = script.sh(returnStdout: true, script: command).trim()
+      def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
+      def result = script.sh(returnStdout: true, script: operation).trim()
       script.echo result
     }
     void publishApplication(Map params = [:]) {
