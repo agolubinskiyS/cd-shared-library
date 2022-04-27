@@ -19,7 +19,6 @@ class Utilities implements Serializable {
       CICDCD_SSO_USER_PASSWORD="$params.password" \
       CICDCD_SSO_TENANT="$params.tenant"     
       """)
-      result = "cra"
       script.echo result
     }
     void publishApplication(Map params = [:]) {
