@@ -30,7 +30,7 @@ class Utilities implements Serializable {
       script.sh(returnStdout: true, script: command + " publishApplication")
     }
     void publishApplication(Map params = [:]) {
-      command = command + """serviceId=$params.serviceId"""""
+      command = command + """serviceId="$params.serviceId" """
       script.sh(returnStdout: true, script: command + " updateApplication")
     }
 }
