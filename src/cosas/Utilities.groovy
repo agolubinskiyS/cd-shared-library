@@ -13,11 +13,12 @@ class Utilities implements Serializable {
       publishApplication(params)
     }
     def login(Map params = [:]) {
-      def result = script.sh(returnStdout: true, script: """. ./login_mock.sh && \
+      def result = script.sh(returnStdout: true, script: """bash login_mock.sh && \
       CICDCD_SSO_URL="$params.url" \
       CICDCD_SSO_USER_ID="$params.user" \
       CICDCD_SSO_USER_PASSWORD="$params.password" \
-      CICDCD_SSO_TENANT="$params.tenant"     
+      CICDCD_SSO_TENANT="$params.tenant" \
+      login_CCT --rawcookies     
       """).trim()
       script.echo result
     }
