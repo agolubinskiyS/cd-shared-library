@@ -3,7 +3,7 @@ package tools
 class Utilities implements Serializable {
 
     def script
-    String operation
+    String command
     Map params = [:]
 
     Utilities(script, params) {
