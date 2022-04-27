@@ -15,7 +15,7 @@ class Utilities implements Serializable {
     public login(Map params = [:]) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, params.user, params.password, params.tenant)
       def cookie = script.sh(returnStdout: true, script: operation).trim()
-      script.echo cookie.substring(21)
+      script.echo cookie.substring(21).toString()
       script.echo cookie.indexOf('=')
     }
     void publishApplication(Map params = [:]) {
