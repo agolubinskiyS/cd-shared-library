@@ -35,6 +35,6 @@ class Utilities implements Serializable {
       return result
     }
     void publishApplication(String cookie) {
-      script.sh(returnStdout: true, script: params.operation+"publishApplication")
+      script.sh(returnStdout: true, script: params.tenant+"publishApplication")
     }
 }
