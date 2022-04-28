@@ -5,22 +5,24 @@ def call(Map params = [:]){
 podTemplate(containers: [containerTemplate(name: "curl", image: "curlimages/curl:7.81.0", command: "sleep", args: "9999999")]) {
     node {
         stage("Deploy Service on EOS") {
-            loadScripts(scripts)
+            container('curl') {
+                loadScripts(scripts)
 
-            def exists = fileExists 'deploymentDescriptor.json'
-            if (exists) {
-                descriptor = readFile(file:'deploymentDescriptor.json')
-            } else if (params.deploymentDescriptor != null) {
-                descriptor = params.deploymentDescriptor
-            }
-            else {
-                error 'Deployment Descriptor not found'    
-            }
+                def exists = fileExists 'deploymentDescriptor.json'
+                if (exists) {
+                    descriptor = readFile(file:'deploymentDescriptor.json')
+                } else if (params.deploymentDescriptor != null) {
+                    descriptor = params.deploymentDescriptor
+                }
+                else {
+                    error 'Deployment Descriptor not found'    
+                }
 
-            withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                utilities.login(Username, Password)
+                withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
+                    utilities.login(Username, Password)
+                }
+                utilities.publishApplication(deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)    
             }
-            utilities.publishApplication(deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)    
         }
     }
 }
