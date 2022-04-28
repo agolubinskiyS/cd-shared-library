@@ -29,6 +29,7 @@ class Utilities implements Serializable {
       cookie = result.substring(0, result.indexOf(';')) 
       if (isNullOrEmpty(cookie)) { throw new RuntimeException("Login failed") }
       command = command + """cookie="$cookie" """
+      script.podTemplate(containers: [script.containerTemplate(name: "curl", image: "curlimages/curl:7.81.0", command: "sleep", args: "9999999")]) 
     }
     
     void publishApplication(Map params = [:]) {
