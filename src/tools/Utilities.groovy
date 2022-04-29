@@ -32,7 +32,7 @@ class Utilities implements Serializable {
     }
     
     void publishApplication(Map params = [:]) {
-      output = script.sh(returnStdout: true, script: command + " publishApplication")
+      def output = script.sh(returnStdout: true, script: command + " publishApplication")
       print output
     }
     
