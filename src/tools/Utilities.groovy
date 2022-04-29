@@ -10,7 +10,7 @@ class Utilities implements Serializable {
 
     Utilities(script, params) {
       this.script = script
-      command = """
+      command = '''
       . ./cct-api.sh &&
       CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
@@ -18,7 +18,7 @@ class Utilities implements Serializable {
       model="$params.model"
       version="$params.version"
       service="$params.service"
-      """
+      '''
       this.params = params
     }
     static boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
@@ -32,7 +32,7 @@ class Utilities implements Serializable {
     }
     
     void publishApplication(Map params = [:]) {
-      def output = script.sh(returnStdout: true, script: command + " publishApplication")
+      def output = script.sh(returnStdout: true, script: command + ' publishApplication')
       print output
     }
     
