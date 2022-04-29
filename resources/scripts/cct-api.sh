@@ -27,6 +27,7 @@ publishApplication() {
 
    if [[ "$status_code" -ne 202 ]] ; then
    echo "Error: Deployment status code: $status_code"
+   exit 2
    else
    echo "OK! Deployment started"
    exit 0
@@ -43,6 +44,7 @@ upgradeApplication() {
 
    if [[ "$status_code" -ne 202 ]] ; then
    echo "Error: Deployment status code: $status_code"
+   exit 2
    else
    echo "OK! Deployment started"
    exit 0
