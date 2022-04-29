@@ -21,7 +21,8 @@ def call(Map params = [:]){
             withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                 utilities.login(Username, Password)
             }
-            utilities.publishApplication(deploymentDescriptor: params.descriptor, model: params.model, version: params.version, service: params.service)    
+            def escaped_json = groovy.json.JsonOutput.toJson(params.descriptor)
+            utilities.publishApplication(deploymentDescriptor: escaped_json, model: params.model, version: params.version, service: params.service)    
         
         }
     }
