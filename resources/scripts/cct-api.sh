@@ -23,7 +23,7 @@ publishApplication() {
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
-   -d "$deploymentDescriptor")
+   -d """$deploymentDescriptor""")
 
    if [[ "$status_code" -ne 202 ]] ; then
    echo "Error: Deployment status code: $status_code"
