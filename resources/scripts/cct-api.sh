@@ -13,7 +13,7 @@ done
 publishApplication() {
    echo "CICDCD_SSO_URL=$CICDCD_SSO_URL"
    echo "CICDCD_SSO_TENANT=$CICDCD_SSO_TENANT"
-   echo $deploymentDescriptor
+   echo $deploymentDescriptor > /var/jenkins_home/workspace/CCT-prueba/output
    echo "model=$model"
    echo "version=$version"
    echo "service=$service"
