@@ -21,7 +21,7 @@ class Utilities implements Serializable {
       """
       this.params = params
     }
-    static boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
+    boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
 
     void login(String Username, String Password) {
       def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
