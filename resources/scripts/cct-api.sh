@@ -28,7 +28,7 @@ publishApplication() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d """$deploymentDescriptor""")
-   statusValidate status_code
+   statusValidate $status_code
 }
 
 upgradeApplication() {
