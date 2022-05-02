@@ -14,6 +14,7 @@ class Utilities implements Serializable {
       . ./cct-api.sh &&
       CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
+      deploymentDescriptor="$params.deploymentDescriptor"
       model="$params.model"
       version="$params.version"
       service="$params.service"
