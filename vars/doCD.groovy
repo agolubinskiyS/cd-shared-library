@@ -15,7 +15,7 @@ def call(Map params = [:]){
                         if (exists) {
                             descriptor = readFile(file:'deploymentDescriptor.json')
                         } else if (params.deploymentDescriptor != null) {
-                            descriptor = params.deploymentDescriptor
+                            descriptor = groovy.json.JsonOutput.toJson(params.deploymentDescriptor)
                         }
                         else {
                             error 'Deployment Descriptor not found'    
@@ -26,8 +26,8 @@ def call(Map params = [:]){
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                             utilities.login(Username, Password)
                         }
-                        // def escaped_json = groovy.json.JsonOutput.toJson(descriptor)
-                        utilities.publishApplication(deploymentDescriptor: escaped_json, model: params.model, version: params.version, service: params.service)    
+                        
+                        utilities.publishApplication(deploymentDescriptor: descriptor, model: params.model, version: params.version, service: params.service)    
                     }
                 }
            }
