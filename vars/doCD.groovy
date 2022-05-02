@@ -26,7 +26,7 @@ def call(Map params = [:]){
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                             utilities.login(Username, Password)
                         }
-                        descriptor = descriptor.replace("\n", "").trim()
+                        descriptor = descriptor.replace("\n", "").replace(" ", "").trim()
                         // descriptor = groovy.json.JsonOutput.toJson(descriptor)
                         utilities.publishApplication(groovy.json.JsonOutput.toJson(descriptor))    
                     }
