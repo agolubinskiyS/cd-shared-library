@@ -4,7 +4,7 @@ def call(Map params = [:]){
     def descriptor = ''
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         node('cloner') {
-            // dir('build') {
+            dir('build') {
                 stage("Deploy Service on EOS") {
                     timeout(time: 1, unit: 'MINUTES') {
                         loadScripts(scripts)
@@ -30,7 +30,7 @@ def call(Map params = [:]){
                         utilities.publishApplication(deploymentDescriptor: escaped_json, model: params.model, version: params.version, service: params.service)    
                     }
                 }
-        //    }
+           }
         }
     // }
 }
