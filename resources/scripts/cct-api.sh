@@ -11,7 +11,6 @@ do
 done
 
 statusValidate(){  
-   echo "Codigo: $1"
    if [[ "$1" -ne 202 ]] ; then
       echo "Error: Deployment status code: $status_code"
       exit 2
