@@ -11,7 +11,7 @@ do
 done
 
 statusValidate(){  
-   if [[ "$1" -ne 202 ]] ; then
+   if [ "$1" -ne 202 ] ; then
       echo "Error: Deployment status code: $status_code"
       exit 2
    else
@@ -37,12 +37,4 @@ upgradeApplication() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d "$deploymentDescriptor")
-
-   if [[ "$status_code" -ne 202 ]] ; then
-   echo "Error: Deployment status code: $status_code"
-   exit 2
-   else
-   echo "OK! Deployment started"
-   exit 0
-   fi
 }
