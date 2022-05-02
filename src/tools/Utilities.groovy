@@ -30,8 +30,8 @@ class Utilities implements Serializable {
       command = command + """cookie="$cookie" """
     }
     
-    void publishApplication(Map params = [:]) {
-      command = command + """deploymentDescriptor="$params.deploymentDescriptor" """
+    void publishApplication(String deploymentDescriptor) {
+      command = command + """deploymentDescriptor="$deploymentDescriptor" """
       def output = script.sh(returnStdout: true, script: command + " publishApplication")
       script.echo(params.deploymentDescriptor)
       script.echo(command)
