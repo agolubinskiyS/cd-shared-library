@@ -31,9 +31,9 @@ class Utilities implements Serializable {
       command = command + """cookie="$cookie" """
     }
     
-    void publishApplication(Map vals = [:]) {
+    void publishApplication(Map params = [:]) {
       def output = script.sh(returnStdout: true, script: command + " publishApplication")
-      script.echo(vals.descriptor)
+      script.echo(params.descriptor)
       script.echo(command)
     }
     
