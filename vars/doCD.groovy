@@ -6,10 +6,11 @@ def call(Map params = [:]){
         node(POD_LABEL) {
             // dir('build') {
                 stage("Deploy Service on EOS") {
-                    timeout(time: 10, unit: 'MINUTES') {
+                    timeout(time: 1, unit: 'MINUTES') {
                         loadScripts(scripts)
                         sh("pwd")
                         sh("ls -lha")
+                        sh("sleep 5m")
                         def exists = fileExists 'deploymentDescriptor.json'
                         if (exists) {
                             descriptor = readFile(file:'deploymentDescriptor.json')
