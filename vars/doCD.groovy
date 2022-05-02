@@ -3,7 +3,7 @@ def call(Map params = [:]){
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     def descriptor = ''
     podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
-        node {
+        node(POD_LABEL) {
             stage("Deploy Service on EOS") {
             
                 loadScripts(scripts)
