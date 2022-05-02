@@ -27,7 +27,6 @@ def call(Map params = [:]){
                             utilities.login(Username, Password)
                         }
                         descriptor = descriptor.replace("\n", "").replace(" ", "").trim()
-                        // descriptor = groovy.json.JsonOutput.toJson(descriptor)
                         utilities.publishApplication(groovy.json.JsonOutput.toJson(descriptor))    
                     }
                 }
