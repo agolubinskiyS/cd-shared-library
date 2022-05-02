@@ -10,7 +10,7 @@ def call(Map params = [:]){
                         loadScripts(scripts)
                         sh("pwd")
                         sh("ls -lha")
-                        sh("sleep 5m")
+
                         def exists = fileExists 'deploymentDescriptor.json'
                         if (exists) {
                             descriptor = readFile(file:'deploymentDescriptor.json')
