@@ -13,11 +13,11 @@ done
 statusValidate(){  
    echo "Codigo: $1"
    if [[ "$1" -ne 202 ]] ; then
-   echo "Error: Deployment status code: $status_code"
-   exit 2
+      echo "Error: Deployment status code: $status_code"
+      exit 2
    else
-   echo "OK! Deployment started"
-   exit 0
+      echo "OK! Deployment started"
+      exit 0
    fi
 }
 
