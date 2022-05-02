@@ -27,6 +27,7 @@ publishApplication() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d """$deploymentDescriptor""")
+   echo """$deploymentDescriptor""" > /tmp/output
    statusValidate $status_code
 }
 
