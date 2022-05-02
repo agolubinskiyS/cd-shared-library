@@ -20,7 +20,8 @@ def call(Map params = [:]){
                         error 'Deployment Descriptor not found'    
                     }
 
-                    assert params.url ==~ $/http(s)?://.+?:\d+/$ : 'unexpected CCT format'
+                    assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
+
                     withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                         utilities.login(Username, Password)
                     }
