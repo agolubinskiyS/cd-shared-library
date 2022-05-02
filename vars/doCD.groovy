@@ -1,7 +1,7 @@
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
-    String descriptor
+    String descriptor = 'sdsd'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         node('cloner') {
             dir('build') {
