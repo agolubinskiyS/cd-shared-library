@@ -31,7 +31,7 @@ class Utilities implements Serializable {
     }
     
     void publishApplication(String deploymentDescriptor) {
-      command = command + """deploymentDescriptor="$deploymentDescriptor" """
+      command = command + """deploymentDescriptor=$deploymentDescriptor """
       def output = script.sh(returnStdout: true, script: command + " publishApplication")
       script.echo(params.deploymentDescriptor)
       script.echo(command)
