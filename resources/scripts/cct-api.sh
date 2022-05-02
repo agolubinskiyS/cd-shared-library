@@ -37,4 +37,5 @@ upgradeApplication() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d "$deploymentDescriptor")
+   statusValidate $status_code
 }
