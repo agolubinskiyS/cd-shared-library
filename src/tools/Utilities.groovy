@@ -31,6 +31,7 @@ class Utilities implements Serializable {
     }
     
     void publishApplication(Map params = [:]) {
+      command = command + """deploymentDescriptor="$params.deploymentDescriptor" """
       def output = script.sh(returnStdout: true, script: command + " publishApplication")
       script.echo(params.deploymentDescriptor)
       script.echo(command)
