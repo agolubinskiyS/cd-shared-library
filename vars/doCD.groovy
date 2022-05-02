@@ -27,6 +27,7 @@ def call(Map params = [:]){
                             utilities.login(Username, Password)
                         }
                         // sh "echo $descriptor"
+                        descriptor = 'algo'
                         utilities.publishApplication(deploymentDescriptor: descriptor, model: params.model, version: params.version, service: params.service)    
                     }
                 }
