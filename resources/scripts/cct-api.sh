@@ -27,7 +27,6 @@ publishApplication() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d """'$deploymentDescriptor'""")
-   echo """'$deploymentDescriptor'""" > /tmp/output
    statusValidate $status_code
 }
 
@@ -37,6 +36,6 @@ upgradeApplication() {
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
-   -d "$deploymentDescriptor")
+   -d """'$deploymentDescriptor'""")
    statusValidate $status_code
 }
