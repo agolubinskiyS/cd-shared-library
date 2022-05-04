@@ -31,6 +31,7 @@ class Utilities implements Serializable {
     }
     
     void publishApplication(String deploymentDescriptor) {
+      if (isNullOrEmpty(deploymentDescriptor)) { throw new RuntimeException("deploymentDescriptor error") }
       command = command + """deploymentDescriptor=$deploymentDescriptor """
       def output = script.sh(returnStdout: true, script: command + " publishApplication")
     }
