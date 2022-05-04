@@ -3,10 +3,11 @@ def call(Map params = [:]){
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     String descriptor
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
+        timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
             dir('build') {
                 stage("Deploy Service on EOS") {
-                    timeout(time: 1, unit: 'MINUTES') {
+                    // timeout(time: 1, unit: 'MINUTES') {
                         loadScripts(scripts)
                         sh("pwd")
                         sh("ls -lha")
@@ -28,9 +29,10 @@ def call(Map params = [:]){
                         }
                         descriptor = descriptor.replace("\n", "").replace(" ", "").trim()
                         utilities.publishApplication(groovy.json.JsonOutput.toJson(descriptor))    
-                    }
+                    // }
                 }
            }
+        }
         }
     // }
 }
