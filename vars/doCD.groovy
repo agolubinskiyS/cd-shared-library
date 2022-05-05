@@ -21,15 +21,24 @@ def call(Map params = [:]){
                         else {
                             error 'Deployment Descriptor not found'    
                         }
-
+                        descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                             utilities.login(Username, Password)
                         }
-                        descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                        resultado = utilities.getDeployByServiceDeployId('grafana')
-                        sh("echo $resultado")
+                        
+                        serviceStatus = utilities.getDeployByServiceDeployId('grafana')
+                        
+                        if (serviceStatus == '200') {
+                            sh("echo Updating")
+                        }
+                        else if (serviceStatus == '404') { 
+                            echo "deploy from scratch"
+                        }
+                        else {
+                            error 'Error getting status'  
+                        }                       
                         // utilities.publishApplication(descriptor)  
                     // }
                 }
