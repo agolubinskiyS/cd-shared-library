@@ -1,6 +1,7 @@
 node('cloner') {
-
-    String cosas = 'cosas cosas'
-    print('-----------')
-    print(cosas)
+    stage("Do Algo") {
+        String cosas = 'cosas cosas'
+        print('-----------')
+        print(cosas)
+    }
 }
