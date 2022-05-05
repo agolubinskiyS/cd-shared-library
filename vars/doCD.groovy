@@ -1,6 +1,6 @@
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
-    def toJsonConverter = new tools.ToJsonConverter(this)
+    
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     String descriptor
     String serviceStatus
@@ -25,6 +25,7 @@ def call(Map params = [:]){
                             error 'Deployment Descriptor not found'    
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
+                        def toJsonConverter = new tools.ToJsonConverter(this, descriptor)
 
                         println(toJsonConverter.parseJsonText(descriptor))
 

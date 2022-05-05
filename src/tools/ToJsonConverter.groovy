@@ -10,8 +10,8 @@ class ToJsonConverter {
         this.stringJson = stringJson
     }
 
-    def parseJsonText(String stringJson) {
-    def object = new JsonSlurper().parseText(json)
+    def parseJsonText() {
+    def object = new JsonSlurper().parseText(stringJson)
     if(object instanceof groovy.json.internal.LazyMap) {
         return new HashMap<>(object)
     }
