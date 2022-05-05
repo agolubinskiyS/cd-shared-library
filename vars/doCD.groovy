@@ -26,12 +26,17 @@ def call(Map params = [:]){
                             error 'Deployment Descriptor not found'    
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                        serviceId = descriptor
 
-                        def jsonSlurper = new JsonSlurper()
-                        def result = jsonSlurper.parseText(descriptor)
+                        @NonCPS
+                        def parseJsonText(String json) {
+                        def object = new JsonSlurper().parseText(json)
+                        if(object instanceof groovy.json.internal.LazyMap) {
+                            return new HashMap<>(object)
+                        }
+                        return object
+                        }
 
-                        println(result)
+                        println(parseJsonText.toString(descriptor))
 
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
