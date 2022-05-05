@@ -1,4 +1,5 @@
 package tools
+import com.cloudbees.groovy.cps.NonCPS
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 
