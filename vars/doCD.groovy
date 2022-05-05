@@ -25,7 +25,7 @@ def call(Map params = [:]){
                             error 'Deployment Descriptor not found'    
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                        def toJsonConverter = new tools.ToJsonConverter(this, descriptor)
+                        def toJsonConverter = new tools.ToJsonConverter(descriptor)
 
                         println(toJsonConverter.parseJsonText())
 
