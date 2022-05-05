@@ -11,7 +11,8 @@ class ToJsonConverter {
     }
 
     def parseJsonText() {
-        def request = new JsonSlurper().parseText(json);
-        return request
+        JsonSlurper parser = new groovy.json.JsonSlurper()
+        Map parsedJson = parser.parseText(json)
+        return parsedJson
     }
 }
