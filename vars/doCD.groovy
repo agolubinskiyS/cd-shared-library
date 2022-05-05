@@ -31,10 +31,10 @@ def call(Map params = [:]){
                         
                         serviceStatus = utilities.getDeployByServiceDeployId('grafana').toString()
                         sh("echo $serviceStatus")
-                        if (serviceStatus == '200') {
+                        if (serviceStatus == "200") {
                             sh("echo Updating")
                         }
-                        else if (serviceStatus == '404') { 
+                        else if (serviceStatus == "404") { 
                             echo "deploy from scratch"
                         }
                         else {
