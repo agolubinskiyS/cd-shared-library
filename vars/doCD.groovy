@@ -1,17 +1,8 @@
 import groovy.json.JsonSlurper
 
-
-@NonCPS
-def parseJsonText(String json) {
-def object = new JsonSlurper().parseText(json)
-if(object instanceof groovy.json.internal.LazyMap) {
-    return new HashMap<>(object)
-}
-return object
-}
-
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
+    def toJsonConverter = new tools.toJsonConverter()
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     String descriptor
     String serviceStatus
