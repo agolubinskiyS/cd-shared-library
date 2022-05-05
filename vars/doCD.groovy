@@ -29,9 +29,9 @@ def call(Map params = [:]){
                         serviceId = descriptor
 
                         def jsonSlurper = new JsonSlurper()
-                        cfg = jsonSlurper.parseText(descriptor)
+                        def result = jsonSlurper.parseText(descriptor)
 
-                        println(cfg.toString())
+                        println(result)
 
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
