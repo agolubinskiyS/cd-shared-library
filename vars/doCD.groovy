@@ -28,7 +28,8 @@ def call(Map params = [:]){
                         def toJsonConverter = new tools.ToJsonConverter(descriptor)
 
                         result = toJsonConverter.parsejson()
-                        println(result[0])
+                          println(result)
+                        println(result['general'])
 
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
