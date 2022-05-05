@@ -28,7 +28,7 @@ def call(Map params = [:]){
                             utilities.login(Username, Password)
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                        resultado = utilities.getDeployByServiceDeployId()
+                        resultado = utilities.getDeployByServiceDeployId(descriptor, 'grafana')
                         sh("echo $resultado")
                         // utilities.publishApplication(descriptor)  
                     // }
