@@ -4,7 +4,7 @@ import groovy.json.JsonOutput
 
 class ToJsonConverter {
     
-    ToJsonConverter{}
+    ToJsonConverter() {}
 
     def parseJsonText(String json) {
     def object = new JsonSlurper().parseText(json)
