@@ -30,7 +30,8 @@ def call(Map params = [:]){
                         }
                         
                         serviceStatus = utilities.getDeployByServiceDeployId('grafana').toString()
-                        sh("echo $serviceStatus")
+                        
+                        println(serviceStatus)
                         if (serviceStatus == "200") {
                             sh("echo Updating")
                         }
