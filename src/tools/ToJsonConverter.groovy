@@ -9,18 +9,10 @@ class ToJsonConverter {
     ToJsonConverter(json) {
         this.json = json
     }
-    
-    @NonCPS
-    @CompileStatic
-    static def convertLazyMapToLinkedHashMap(def value) {
-        if (value instanceof LazyMap) {
-        Map copy = [:]
-        for (pair in (value as LazyMap)) {
-            copy[pair.key] = convertLazyMapToLinkedHashMap(pair.value)
-        }
-        copy
-        } else {
-        value
-        }
+
+    def parseJsonText() {
+        def slurper = new groovy.json.JsonSlurper()
+        def parsedJson = slurper.parseText(json)
+        return parsedJson
     }
 }
