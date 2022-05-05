@@ -11,10 +11,7 @@ class ToJsonConverter {
     }
 
     def parseJsonText() {
-        def object = new JsonSlurper().parseText(json)
-        if(object instanceof groovy.json.internal.LazyMap) {
-            return new HashMap<>(object)
-        }
-        return object
+        def request = new JsonSlurper().parseText(json);
+        return request
     }
 }
