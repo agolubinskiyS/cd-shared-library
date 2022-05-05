@@ -1,5 +1,3 @@
-import groovy.json.JsonSlurper
-
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
     def toJsonConverter = new tools.ToJsonConverter(this)
@@ -28,6 +26,7 @@ def call(Map params = [:]){
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
 
+                        println(toJsonConverter.parseJsonText(descriptor))
 
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
