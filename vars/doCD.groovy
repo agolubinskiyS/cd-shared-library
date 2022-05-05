@@ -29,8 +29,6 @@ def call(Map params = [:]){
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
 
 
-                        println(parseJsonText.toString(descriptor))
-
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
