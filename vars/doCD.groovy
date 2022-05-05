@@ -12,6 +12,7 @@ def call(Map params = [:]){
                 stage("Deploy Service on EOS") {
                     // timeout(time: 1, unit: 'MINUTES') {
                         loadScripts(scripts)
+                        assertParams(params)
                         sh("pwd")
                         sh("ls -lha")
 
@@ -25,13 +26,6 @@ def call(Map params = [:]){
                             error 'Deployment Descriptor not found'    
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                        def toJsonConverter = new tools.ToJsonConverter(descriptor)
-
-                        result = toJsonConverter.parsejson()
-                          println(result)
-                        println(result[0])
-
-                        assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                             utilities.login(Username, Password)
