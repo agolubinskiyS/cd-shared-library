@@ -43,7 +43,6 @@ class Utilities implements Serializable {
 
     def getDeployByServiceDeployId(String serviceId) {
       command = command + """serviceId="$serviceId" """
-      String serviceStatus = script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId")
-      return serviceStatus
+      return script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId")
     }
 }
