@@ -3,6 +3,7 @@ def call(Map params = [:]){
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
     String descriptor
     String serviceStatus
+    String serviceId
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
@@ -23,25 +24,20 @@ def call(Map params = [:]){
                             error 'Deployment Descriptor not found'    
                         }
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
+                        serviceId = descriptor
+                        println(serviceId['general'])
+
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
                         withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
                             utilities.login(Username, Password)
                         }
-                        
-                        serviceStatus = utilities.getDeployByServiceDeployId('grafana')
-
-                        println(serviceStatus)
-                        if (serviceStatus.equals("200")) {
-                            sh("echo Updating")
+                                            
+                        if (utilities.getDeployByServiceDeployId(serviceId) == '200') {
+                            utilities.updateService(descriptor, serviceId)
+                        } else { 
+                            utilities.publishApplication(descriptor) 
                         }
-                        else if (serviceStatus == "404") { 
-                            echo "deploy from scratch"
-                        }
-                        else {
-                            error 'Error getting status'  
-                        }                       
-                        // utilities.publishApplication(descriptor)  
                     // }
                 }
            }
