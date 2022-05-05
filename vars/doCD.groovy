@@ -15,7 +15,8 @@ def call(Map params = [:]){
                         assertParams(params)
                         sh("pwd")
                         sh("ls -lha")
-
+                        print('++++++++++++++')
+                        print(cosas)
                         def exists = fileExists 'deploymentDescriptor.json'
                         if (exists) {
                             descriptor = readFile(file:'deploymentDescriptor.json')
