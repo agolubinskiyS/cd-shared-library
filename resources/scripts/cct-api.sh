@@ -43,10 +43,14 @@ updateService() {
    statusValidate $status_code
 }
 
+# getDeployByServiceDeployId() {
+#   status_code=$($curlAction \
+#    -X GET $CICDCD_SSO_URL/$cctUrlResources/update/$serviceId?version=$version \
+#    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+#    -H 'accept: */*')
+#    echo "Status code: $status_code"
+# }
+
 getDeployByServiceDeployId() {
-  status_code=$($curlAction \
-   -X GET $CICDCD_SSO_URL/$cctUrlResources/update/$serviceId?version=$version \
-   -H "Cookie: dcos-acs-auth-cookie=$cookie" \
-   -H 'accept: */*')
-   echo "Status code: $status_code"
+   echo "200"
 }
