@@ -36,14 +36,13 @@ class Utilities implements Serializable {
       script.sh(returnStdout: true, script: command + " publishApplication")
     }
     
-    void updateService(Map params = [:]) {
-      command = command + """serviceId="$params.serviceId" """ + """deploymentDescriptor=$deploymentDescriptor """
+    void updateService(String deploymentDescriptor, String serviceId) {
+      command = command + """serviceId="$serviceId" """ + """deploymentDescriptor=$deploymentDescriptor """
       script.sh(returnStdout: true, script: command + " updateService")
     }
 
-    def getDeployByServiceDeployId(String deploymentDescriptor, Map params = [:]) {
-      command = command + """serviceId="$params.serviceId" """
-      resultado = script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId")
-      return resultado
+    def getDeployByServiceDeployId(String serviceId]) {
+      command = command + """serviceId="$serviceId" """
+      script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId")
     }
 }
