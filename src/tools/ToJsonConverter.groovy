@@ -10,9 +10,13 @@ class ToJsonConverter {
         this.json = json
     }
 
-    def parseJsonText() {
-        def slurper = new groovy.json.JsonSlurper()
-        def parsedJson = slurper.parseText(json)
-        return parsedJson
+    @NonCPS
+    def parsejson(String json) {
+        def lazyMap = new JsonSlurper().parseText(json)
+
+        // JsonSlurper returns a non-serializable LazyMap, so copy it into a regular map before returning
+        def m = [:]
+        m.putAll(lazyMap)
+        return m
     }
 }
