@@ -1,3 +1,5 @@
+import groovy.json.JsonSlurper
+
 def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
