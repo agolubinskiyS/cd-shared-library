@@ -11,7 +11,7 @@ class ToJsonConverter {
     }
 
     @NonCPS
-    def parsejson(String json) {
+    def parsejson() {
         def lazyMap = new JsonSlurper().parseText(json)
 
         // JsonSlurper returns a non-serializable LazyMap, so copy it into a regular map before returning
