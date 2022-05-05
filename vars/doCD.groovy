@@ -27,7 +27,7 @@ def call(Map params = [:]){
                         descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
                         def toJsonConverter = new tools.ToJsonConverter(this, descriptor)
 
-                        println(toJsonConverter.parseJsonText(descriptor))
+                        println(toJsonConverter.parseJsonText())
 
                         assert params.url ==~ $/http(s)?://.+?/$ : 'unexpected CCT url format'
 
