@@ -33,11 +33,16 @@ class Utilities implements Serializable {
     void publishApplication(String deploymentDescriptor) {
       if (isNullOrEmpty(deploymentDescriptor)) { throw new RuntimeException("deploymentDescriptor error") }
       command = command + """deploymentDescriptor=$deploymentDescriptor """
-      def output = script.sh(returnStdout: true, script: command + " publishApplication")
+      script.sh(returnStdout: true, script: command + " publishApplication")
     }
     
-    void upgradeApplication(Map params = [:]) {
+    void updateService(Map params = [:]) {
+      command = command + """serviceId="$params.serviceId" """ + """deploymentDescriptor=$deploymentDescriptor """
+      script.sh(returnStdout: true, script: command + " updateService")
+    }
+
+    def getDeployByServiceDeployId(String deploymentDescriptor, Map params = [:]) {
       command = command + """serviceId="$params.serviceId" """
-      script.sh(returnStdout: true, script: command + " upgradeApplication")
+      script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId")
     }
 }
