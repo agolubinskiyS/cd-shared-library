@@ -4,9 +4,13 @@ import groovy.json.JsonOutput
 
 class ToJsonConverter {
     
-    ToJsonConverter() {}
+    String stringJson
+    
+    ToJsonConverter(stringJson) {
+        this.stringJson = stringJson
+    }
 
-    def parseJsonText(String json) {
+    def parseJsonText(String stringJson) {
     def object = new JsonSlurper().parseText(json)
     if(object instanceof groovy.json.internal.LazyMap) {
         return new HashMap<>(object)
