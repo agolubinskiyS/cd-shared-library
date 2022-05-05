@@ -12,7 +12,7 @@ class ToJsonConverter {
 
     def parseJsonText() {
         def slurper = new groovy.json.JsonSlurper()
-        def parsedJson = slurper.parse(json)
+        def parsedJson = slurper.parseText(json)
         return parsedJson
     }
 }
