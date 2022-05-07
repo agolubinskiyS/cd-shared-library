@@ -77,8 +77,7 @@ prueba() {
 
 parametrizeImage() {
    tmp=$(mktemp)
-   echo '${eos.dockerRegistry}/'$image > /tmp/output
-   # jq --arg i "$image" '.data.container.runners[0].image = $i' \
-   # saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
+   jq --arg i '${eos.dockerRegistry}/'$image '.data.container.runners[0].image = $i' \
+   saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
 }
 
