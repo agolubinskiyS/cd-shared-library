@@ -59,6 +59,7 @@ updateServiceDescriptor() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d $serviceDescriptor)
+   echo $serviceDescriptor
    statusValidate $status_code
 }
 
