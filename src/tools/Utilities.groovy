@@ -53,7 +53,7 @@ class Utilities implements Serializable {
     void updateServiceDescriptor(String serviceDescriptor) {
       if (isNullOrEmpty(serviceDescriptor)) { throw new RuntimeException("serviceDescriptor error") }
       def algo = String.format("echo %s", serviceDescriptor)
-      script.sh(`$algo`)
+      script.sh("""#!/bin/bash  $algo""")
       command = command + """serviceDescriptor=$serviceDescriptor """
       script.sh(returnStdout: true, script: command + " updateServiceDescriptor")
     }
