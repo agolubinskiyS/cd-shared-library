@@ -56,4 +56,9 @@ class Utilities implements Serializable {
       // command = command + """serviceDescriptor=\'${serviceDescriptor}\' """
       script.sh(returnStdout: true, script: "#!/bin/bash " + command + " updateServiceDescriptor")
     }
+
+    void parametrizeImage(String image) {
+      command = command + """image=$image """
+      script.sh(returnStdout: true, script: command + " parametrizeImage")
+    }
 }
