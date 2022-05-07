@@ -52,19 +52,19 @@ getDeployByServiceDeployId() {
    echo "$status_code"
 }
 
-updateServiceDescriptor() {
-   status_code=$($curlAction \
-   -X PUT $CICDCD_SSO_URL/$cctUrlUniverse/descriptors/$service/$model/$version \
-   -H "Cookie: dcos-acs-auth-cookie=$cookie" \
-   -H 'Content-Type: application/json' \
-   -H 'accept: */*' \
-   -d $(cat service-descriptor.json))
-   statusValidate $status_code
-}
-
 # updateServiceDescriptor() {
-#    echo $(cat saas-universe/maintenance-core-default.json) > /tmp/output
+#    status_code=$($curlAction \
+#    -X PUT $CICDCD_SSO_URL/$cctUrlUniverse/descriptors/$service/$model/$version \
+#    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+#    -H 'Content-Type: application/json' \
+#    -H 'accept: */*' \
+#    -d $(cat service-descriptor.json))
+#    statusValidate $status_code
 # }
+
+updateServiceDescriptor() {
+   echo $(cat saas-universe/maintenance-core-default.json) > /tmp/output2
+}
 
 prueba() {
    status_code=$($curlAction \
