@@ -68,5 +68,5 @@ prueba() {
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
    -d """$serviceDescriptor""")
-   echo """$serviceDescriptor"""
+   echo $serviceDescriptor
 }
