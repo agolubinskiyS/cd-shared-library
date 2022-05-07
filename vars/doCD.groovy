@@ -12,7 +12,9 @@ def call(Map params = [:]){
                 stage("Deploy Service on EOS") {
                     loadScripts(scripts)
                     assertParams(params)
-                    println('CRA')
+                    for (entry in params) {
+                        println "KEY: $entry.key = Value: $entry.value"
+                    }
                     serviceDescriptor = readFile(file: 'saas-universe/maintenance-core-default.json')
                     serviceDescriptor = groovy.json.JsonOutput.toJson(serviceDescriptor.replace("\n", "").replace(" ", "").trim())
                         
