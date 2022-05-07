@@ -75,8 +75,14 @@ prueba() {
    echo $serviceDescriptor
 }
 
+# parametrizeImage() {
+#    tmp=$(mktemp)
+#    jq --arg i "$image" '.data.container.runners[0].image = $i' \
+#    saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
+# }
+
 parametrizeImage() {
    tmp=$(mktemp)
-   jq --arg i "$image" '.data.container.runners[0].image = $i' \
-   saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
+   # jq --arg i "$image" '.data.container.runners[0].image = $i' \
+   # saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
 }
