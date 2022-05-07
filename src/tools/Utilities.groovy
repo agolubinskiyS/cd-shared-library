@@ -59,6 +59,6 @@ class Utilities implements Serializable {
 
     void parametrizeImage(String image) {
       command = command + """image=$image """
-      script.sh(returnStdout: true, script: command + " parametrizeImage")
+      script.sh(returnStdout: true, script: "#!/bin/bash " + command + " parametrizeImage")
     }
 }
