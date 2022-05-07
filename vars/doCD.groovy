@@ -22,7 +22,7 @@ def call(Map params = [:]){
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    
 
-                    String image = '''${eos.dockerRegistry}/''' + MODULE + ":" + INTERNAL_VERSION
+                    String image = MODULE + ":" + INTERNAL_VERSION
                     utilities.parametrizeImage(image)    
 
                     def exists = fileExists 'deploymentDescriptor.json'
