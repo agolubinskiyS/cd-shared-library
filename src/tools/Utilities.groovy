@@ -11,7 +11,6 @@ class Utilities implements Serializable {
     Utilities(script, params) {
       this.script = script
       command = """
-      #!/bin/bash
       . ./cct-api.sh &&
       CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
@@ -54,7 +53,7 @@ class Utilities implements Serializable {
     void updateServiceDescriptor(String serviceDescriptor) {
       if (isNullOrEmpty(serviceDescriptor)) { throw new RuntimeException("serviceDescriptor error") }
       // script.sh("""#!/bin/bash  echo $serviceDescriptor""")
-      command = command + """serviceDescriptor='${serviceDescriptor}' """
+      command = command + 'serviceDescriptor='${serviceDescriptor}''
       script.sh(returnStdout: true, script: command + " updateServiceDescriptor")
     }
 }
