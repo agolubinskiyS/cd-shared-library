@@ -11,6 +11,7 @@ class Utilities implements Serializable {
     Utilities(script, params) {
       this.script = script
       command = """
+      #!/bin/bash
       . ./cct-api.sh &&
       CICDCD_SSO_URL="$params.url"
       CICDCD_SSO_TENANT="$params.tenant"
