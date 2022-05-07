@@ -77,7 +77,8 @@ prueba() {
 
 parametrizeImage() {
    tmp=$(mktemp)
-   jq --arg i "$image" '.data.container.runners[0].image = $i' \
-   saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
+   echo $image
+   # jq --arg i "$image" '.data.container.runners[0].image = $i' \
+   # saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
 }
 
