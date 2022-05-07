@@ -52,6 +52,7 @@ class Utilities implements Serializable {
 
     void updateServiceDescriptor(String serviceDescriptor) {
       if (isNullOrEmpty(serviceDescriptor)) { throw new RuntimeException("serviceDescriptor error") }
+      print(serviceDescriptor)
       command = command + """serviceDescriptor='''$serviceDescriptor''' """
       script.sh(returnStdout: true, script: command + " updateServiceDescriptor")
     }
