@@ -15,6 +15,7 @@ def call(Map params = [:]){
 
                     serviceDescriptor = readFile(file: 'saas-universe/maintenance-core-default.json')
                     serviceDescriptor = groovy.json.JsonOutput.toJson(serviceDescriptor.replace("\n", "").replace(" ", "").trim())
+                    writeFile(file: 'service-descriptor.json', text: serviceDescriptor)
 
                     def exists = fileExists 'deploymentDescriptor.json'
                     if (exists) {

@@ -58,7 +58,7 @@ updateServiceDescriptor() {
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
-   -d $(cat saas-universe/maintenance-core-default.json))
+   -d $(cat service-descriptor.json))
    statusValidate $status_code
 }
 
