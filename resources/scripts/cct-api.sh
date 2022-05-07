@@ -58,8 +58,7 @@ updateServiceDescriptor() {
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
-   -d $serviceDescriptor)
-   echo $serviceDescriptor
+   -d "'"$serviceDescriptor"'")
    statusValidate $status_code
 }
 
