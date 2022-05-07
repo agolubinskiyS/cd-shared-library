@@ -63,7 +63,7 @@ getDeployByServiceDeployId() {
 # }
 
 updateServiceDescriptor() {
-   echo 'hola'
+   echo $(cat saas-universe/maintenance-core-default.json)
 }
 
 prueba() {
