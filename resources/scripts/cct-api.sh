@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 for PARAMETER in "$@"
 do
