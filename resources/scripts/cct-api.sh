@@ -52,14 +52,18 @@ getDeployByServiceDeployId() {
    echo "$status_code"
 }
 
+# updateServiceDescriptor() {
+#    status_code=$($curlAction \
+#    -X PUT $CICDCD_SSO_URL/$cctUrlUniverse/descriptors/$service/$model/$version \
+#    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+#    -H 'Content-Type: application/json' \
+#    -H 'accept: */*' \
+#    -d $serviceDescriptor)
+#    statusValidate $status_code
+# }
+
 updateServiceDescriptor() {
-   status_code=$($curlAction \
-   -X PUT $CICDCD_SSO_URL/$cctUrlUniverse/descriptors/$service/$model/$version \
-   -H "Cookie: dcos-acs-auth-cookie=$cookie" \
-   -H 'Content-Type: application/json' \
-   -H 'accept: */*' \
-   -d $serviceDescriptor)
-   statusValidate $status_code
+   echo 'hola'
 }
 
 prueba() {
