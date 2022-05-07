@@ -12,13 +12,14 @@ done
 
 curlAction="curl --write-out %{http_code} --silent --output /dev/null -k"
 cctUrlResources="service/cct-deploy-api"
+cctUrlUniverse="service/cct-universe/v1"
 
 statusValidate(){  
    if [ "$1" -ne 202 ] ; then
-      echo "Error: Deployment status code: $status_code"
+      echo "Error: status code: $status_code"
       exit 2
    else
-      echo "OK! Deployment started"
+      echo "Done"
       exit 0
    fi
 }
@@ -43,14 +44,20 @@ updateService() {
    statusValidate $status_code
 }
 
-# getDeployByServiceDeployId() {
-#   status_code=$($curlAction \
-#    -X GET $CICDCD_SSO_URL/$cctUrlResources/update/$serviceId?version=$version \
-#    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
-#    -H 'accept: */*')
-#    echo "Status code: $status_code"
-# }
-
 getDeployByServiceDeployId() {
-   echo "200"
+  status_code=$($curlAction \
+   -X GET $CICDCD_SSO_URL/$cctUrlResources/update/$serviceId?version=$version \
+   -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+   -H 'accept: */*')
+   echo "$status_code"
+}
+
+updateServiceDescriptor() {
+   status_code=$($curlAction \
+   -X PUT $CICDCD_SSO_URL/$cctUrlUniverse/descriptors/$service/$model/$version \
+   -H "Cookie: dcos-acs-auth-cookie=$cookie" \
+   -H 'Content-Type: application/json' \
+   -H 'accept: */*' \
+   -d $serviceDescriptor)
+   statusValidate $status_code
 }

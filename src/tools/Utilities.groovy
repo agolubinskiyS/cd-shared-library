@@ -23,7 +23,7 @@ class Utilities implements Serializable {
     boolean isNullOrEmpty(String str) { return (str == null || str.allWhitespace) }
 
     void login(String Username, String Password) {
-      def operation = String.format("./login.sh %s %s %s %s", params.url, Username, Password, params.tenant)
+      def operation = String.format("./login.sh %s %s %s %s", "$params.url/login", Username, Password, params.apiTenant)
       def result = script.sh(returnStdout: true, script: operation).trim().substring(21)
       cookie = result.substring(0, result.indexOf(';')) 
       if (isNullOrEmpty(cookie)) { throw new RuntimeException("Login failed") }
@@ -41,8 +41,18 @@ class Utilities implements Serializable {
       script.sh(returnStdout: true, script: command + " updateService")
     }
 
+    def getServiceId(String deploymentDescriptor) {
+      return script.sh(returnStdout: true, script: "echo $deploymentDescriptor | jq -r .general.serviceId" ).trim().toString()
+    }
+
     def getDeployByServiceDeployId(String serviceId) {
       command = command + """serviceId="$serviceId" """
       return script.sh(returnStdout: true, script: command + " getDeployByServiceDeployId").trim().toString()
+    }
+
+    void updateServiceDescriptor(String serviceDescriptor) {
+      if (isNullOrEmpty(serviceDescriptor)) { throw new RuntimeException("serviceDescriptor error") }
+      command = command + """serviceDescriptor=$serviceDescriptor """
+      script.sh(returnStdout: true, script: command + " updateServiceDescriptor")
     }
 }
