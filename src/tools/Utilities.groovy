@@ -54,6 +54,6 @@ class Utilities implements Serializable {
       if (isNullOrEmpty(serviceDescriptor)) { throw new RuntimeException("serviceDescriptor error") }
       // script.sh("""#!/bin/bash  echo $serviceDescriptor""")
       command = command + "serviceDescriptor=\"${serviceDescriptor}\" "
-      script.sh(returnStdout: true, script: command + " updateServiceDescriptor")
+      script.sh(returnStdout: true, script: "#!/bin/bash " + command + " updateServiceDescriptor")
     }
 }
