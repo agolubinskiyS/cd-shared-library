@@ -58,6 +58,15 @@ updateServiceDescriptor() {
    -H "Cookie: dcos-acs-auth-cookie=$cookie" \
    -H 'Content-Type: application/json' \
    -H 'accept: */*' \
-   -d $serviceDescriptor)
+   -d '''$serviceDescriptor''')
    statusValidate $status_code
+}
+
+prueba() {
+   status_code=$($curlAction \
+   -X PUT url \
+   -H 'Content-Type: application/json' \
+   -H 'accept: */*' \
+   -d """$serviceDescriptor""")
+   echo """$serviceDescriptor"""
 }
