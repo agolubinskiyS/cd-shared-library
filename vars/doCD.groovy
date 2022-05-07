@@ -10,33 +10,36 @@ def call(Map params = [:]){
         node('cloner') {
             dir('build') {
                 stage("Deploy Service on EOS") {
-                    // timeout(time: 1, unit: 'MINUTES') {
-                        loadScripts(scripts)
-                        assertParams(params)
-                        sh("pwd")
-                        sh("ls -lha")
-                        print('++++++++++++++')
-                        print(cosas)
-                        def exists = fileExists 'deploymentDescriptor.json'
-                        if (exists) {
-                            descriptor = readFile(file:'deploymentDescriptor.json')
-                        } else if (params.deploymentDescriptor != null) {
-                            descriptor = params.deploymentDescriptor
-                        }
-                        else {
-                            error 'Deployment Descriptor not found'    
-                        }
-                        descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
+                    loadScripts(scripts)
+                    assertParams(params)
 
-                        withCredentials([usernamePassword(credentialsId:'cct-api', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                            utilities.login(Username, Password)
-                        }
-                                            
-                        if (utilities.getDeployByServiceDeployId(serviceId) == '200') {
-                            utilities.updateService(descriptor, serviceId)
-                        } else { 
-                            utilities.publishApplication(descriptor) 
-                        }
+                    serviceDescriptor = readFile(file: 'saas-universe/maintenance-core-default.json')
+                    serviceDescriptor = groovy.json.JsonOutput.toJson(serviceDescriptor.replace("\n", "").replace(" ", "").trim())
+
+                    def exists = fileExists 'deploymentDescriptor.json'
+                    if (exists) {
+                        descriptor = readFile(file:'deploymentDescriptor.json')
+                    } else if (params.deploymentDescriptor != null) {
+                        descriptor = params.deploymentDescriptor
+                    }
+                    else {
+                        error 'Deployment Descriptor not found'    
+                    }
+                    utilities.updateServiceDescriptor(serviceDescriptor)
+                    // descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
+                    // serviceId = utilities.getServiceId(descriptor)
+                    
+                    
+                    // withCredentials([usernamePassword(credentialsId:'CREDENTIALS_SOLUTIONS_YANKEE_CCT-API', passwordVariable: 'Password', usernameVariable: 'Username')]) {
+                    //     utilities.login(Username, Password)
+                    // }
+
+                    // utilities.updateServiceDescriptor(serviceDescriptor)
+
+                    // if (utilities.getDeployByServiceDeployId(serviceId) == '200') {
+                    //     utilities.updateService(descriptor, serviceId)
+                    // } else { 
+                    //     utilities.publishApplication(descriptor) 
                     // }
                 }
            }
