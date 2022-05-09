@@ -67,11 +67,11 @@ class Utilities implements Serializable {
     }
     
     def loadDeploymentDescriptor(String deploymentDescriptorPath) {
-      def exists = fileExists deploymentDescriptorPath
+      def file = new File(deploymentDescriptorPath)
       if (params.deploymentDescriptor != null) {
         descriptor = params.deploymentDescriptor
       }
-      else if (exists) {
+      else if (file.exists()) {
         descriptor = readFile(file: deploymentDescriptorPath)
       } else { 
         throw new RuntimeException("Deployment Descriptor not found") 
