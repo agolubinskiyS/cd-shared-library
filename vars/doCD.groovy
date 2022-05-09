@@ -25,16 +25,16 @@ def call(Map params = [:]){
                     String image = MODULE + ":" + INTERNAL_VERSION
                     utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
-                    def exists = fileExists 'deploymentDescriptor.json'
-                    if (exists) {
-                        descriptor = readFile(file:'deploymentDescriptor.json')
-                    } else if (params.deploymentDescriptor != null) {
-                        descriptor = params.deploymentDescriptor
-                    }
-                    else {
-                        error 'Deployment Descriptor not found'    
-                    }
-                    utilities.updateServiceDescriptor(serviceDescriptor)
+                    // def exists = fileExists 'deploymentDescriptor.json'
+                    // if (exists) {
+                    //     descriptor = readFile(file:'deploymentDescriptor.json')
+                    // } else if (params.deploymentDescriptor != null) {
+                    //     descriptor = params.deploymentDescriptor
+                    // }
+                    // else {
+                    //     error 'Deployment Descriptor not found'    
+                    // }
+                    // utilities.updateServiceDescriptor(serviceDescriptor)
                     // descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
                     // serviceId = utilities.getServiceId(descriptor)
                     
