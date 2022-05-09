@@ -3,6 +3,9 @@ def call(Map params = [:]){
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
+    def loadDeploymentDescriptor() {
+        return 'algo'
+    }
 
     String descriptor
     String serviceStatus
@@ -19,7 +22,8 @@ def call(Map params = [:]){
                     assertParams(params)
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
-                    println(deploymentDescriptorPath)
+                    
+                    println(loadDeploymentDescriptor)
                     // def exists = fileExists 'deploymentDescriptor.json'
                     // if (exists) {
                     //     descriptor = readFile(file:'deploymentDescriptor.json')
