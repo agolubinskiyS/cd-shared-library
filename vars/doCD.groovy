@@ -26,8 +26,10 @@ def call(Map params = [:]){
                     String image = MODULE + ":" + INTERNAL_VERSION
 
 
-                    
+
                     serviceDescriptorPath ? serviceDescriptorPath : 'algo'
+
+                    println(serviceDescriptorPath)
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
                     // def exists = fileExists 'deploymentDescriptor.json'
