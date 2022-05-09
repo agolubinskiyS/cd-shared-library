@@ -62,8 +62,8 @@ class Utilities implements Serializable {
       script.sh(returnStdout: true, script: "#!/bin/bash " + command + " parametrizeImage")
     }
 
-    def getLatestJson() {
-     return 'algo'
+    def getLatestJson(String saasPath) {
+      return saasPath + '/' + script.sh(returnStdout: true, script: "#!/bin/bash ls" +  saasPath + " -t1 | egrep .json  | head -n 1" ).trim().toString()
     }
 
 }

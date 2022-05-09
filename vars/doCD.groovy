@@ -8,6 +8,7 @@ def call(Map params = [:]){
     String serviceStatus
     String serviceId
     String serviceDescriptorPath
+    String saasPath = 'saas-universe'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
