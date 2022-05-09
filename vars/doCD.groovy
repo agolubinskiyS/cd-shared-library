@@ -1,5 +1,6 @@
 def call(Map params = [:], timeoutMinutes = 1){
     def api = new tools.CCTapi(this, params)
+    def utils = new tools.Utilities(this)
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
 
@@ -37,7 +38,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     } 
                    
                     deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
-                    serviceId = serviceId ?: api.getServiceId(deploymentDescriptor)
+                    serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
 
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                    
