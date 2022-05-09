@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 
 def call(Map params = [:], timeoutMinutes = 1){
     def utilities = new tools.Utilities(this, params)
-    def j = new groovy.json.JsonOutput()
+    def j = new 
 
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
@@ -30,10 +30,10 @@ def call(Map params = [:], timeoutMinutes = 1){
 
                     try {
                         if (params.deploymentDescriptor != null) {
-                            deploymentDescriptor = params.deploymentDescriptor
+                            deploymentDescriptor = params.deploymentDescriptor.replace("\n", "").replace(" ", "").trim()
                         }
                         else if (descriptorExists) {
-                            deploymentDescriptor = readFile(file:"$deploymentDescriptorPath")
+                            deploymentDescriptor = readFile(file:"$deploymentDescriptorPath").replace("\n", "").replace(" ", "").trim()
                         }
                         else {
                             if (utilities.isNullOrEmpty(serviceId)) { error "serviceID not provided." }
@@ -44,9 +44,9 @@ def call(Map params = [:], timeoutMinutes = 1){
                         error "Deployment Descriptor not found. Error code: ${err}"
                     }
                     
-                    deploymentDescriptor = j.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
+                    // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                     serviceId = utilities.getServiceId(descriptor)
-
+                    println(serviceId)
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    
 
