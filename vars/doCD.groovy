@@ -43,7 +43,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     }
                     
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
-                    serviceId = utilities.getServiceId(descriptor)
+                    serviceId = utilities.getServiceId(deploymentDescriptor)
                     println(serviceId)
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    
