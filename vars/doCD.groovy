@@ -18,6 +18,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                 stage("Deploy Service on EOS") {
                     loadScripts(scripts)
                     assertParams(params)
+                    sh("ls -lha")
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
 
