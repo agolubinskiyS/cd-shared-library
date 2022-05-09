@@ -83,6 +83,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                 }
                 stage("get status") {
                     for (i in retries) {
+                            sleep(2)
                             println("$i $serviceId")
                         }
                 }
