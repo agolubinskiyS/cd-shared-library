@@ -30,7 +30,7 @@ def call(Map params = [:]){
 
 
                     // serviceDescriptorPath = 'car'
-                    serviceDescriptorPath = serviceDescriptorPath ?: utilities.getLatestJson()
+                    serviceDescriptorPath = serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
 
                     println(serviceDescriptorPath)
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
