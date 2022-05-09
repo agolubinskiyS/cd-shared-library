@@ -35,9 +35,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                         serviceId = params.serviceId 
                         deploymentDescriptor = getDeploymentDescriptor(serviceId)
                     } 
-                    if api.isNullOrEmpty(serviceId) { error "serviceID not provided." }
-                    if api.isNullOrEmpty(deploymentDescriptor) { error "DeploymentDescriptor not found." }
-
+                   
                     deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
                     serviceId = serviceId ?: api.getServiceId(deploymentDescriptor)
 
