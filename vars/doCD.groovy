@@ -2,6 +2,11 @@ def call(Map params = [:]){
     def utilities = new tools.Utilities(this, params)
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
+
+    def getLatestJson () {
+        return 'algo'
+    }
+
     String descriptor
     String serviceStatus
     String serviceId
@@ -27,7 +32,7 @@ def call(Map params = [:]){
 
 
                     serviceDescriptorPath = 'car'
-                    serviceDescriptorPath = serviceDescriptorPath ?: 'algo'
+                    serviceDescriptorPath = serviceDescriptorPath ?: getLatestJson()
 
                     println(serviceDescriptorPath)
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
