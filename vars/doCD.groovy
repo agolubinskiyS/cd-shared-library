@@ -26,7 +26,7 @@ def call(Map params = [:]){
                     String image = MODULE + ":" + INTERNAL_VERSION
 
 
-
+                    serviceDescriptorPath = 'car'
                     serviceDescriptorPath = serviceDescriptorPath ?: 'algo'
 
                     println(serviceDescriptorPath)
