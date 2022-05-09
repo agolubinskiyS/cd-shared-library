@@ -5,6 +5,7 @@ def call(Map params = [:], timeoutMinutes = 1){
 
 
 
+    Integer retries = 3
     String deploymentDescriptor
     String serviceStatus
     String serviceId
@@ -38,15 +39,15 @@ def call(Map params = [:], timeoutMinutes = 1){
                     } 
                    
                     deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
-                    serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
-
+                    // serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
+                    serviceId = 's00s'
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                    
                     println(serviceId)
-                    String MODULE = 'MODULO'
-                    String INTERNAL_VERSION = 'Version'    
+                    // String MODULE = 'MODULO'
+                    // String INTERNAL_VERSION = 'Version'    
 
-                    String image = MODULE + ":" + INTERNAL_VERSION
+                    // String image = MODULE + ":" + INTERNAL_VERSION
 
 
                     // serviceDescriptorPath = 'car'
@@ -79,6 +80,11 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // } else { 
                     //     api.publishApplication(descriptor) 
                     // }
+                }
+                stage("get status") {
+                    for (i in retries) {
+                            println("$i $serviceId")
+                        }
                 }
            }
         }
