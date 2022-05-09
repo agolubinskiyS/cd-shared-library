@@ -23,7 +23,7 @@ def call(Map params = [:]){
                     String INTERNAL_VERSION = 'Version'    
 
                     String image = MODULE + ":" + INTERNAL_VERSION
-                    utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
+                    // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
                     // def exists = fileExists 'deploymentDescriptor.json'
                     // if (exists) {
