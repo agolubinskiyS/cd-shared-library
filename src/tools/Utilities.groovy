@@ -65,5 +65,17 @@ class Utilities implements Serializable {
     def getLatestJson(String saasPath) {
       return saasPath + '/' + script.sh(returnStdout: true, script: "ls " +  saasPath + " -t1 | egrep .json  | head -n 1" ).trim().toString()
     }
-
+    
+    def loadDeploymentDescriptor(String deploymentDescriptorPath) {
+      def exists = fileExists deploymentDescriptorPath
+      if (params.deploymentDescriptor != null) {
+        descriptor = params.deploymentDescriptor
+      }
+      else if (exists) {
+        descriptor = readFile(file: deploymentDescriptorPath)
+      } else { 
+        throw new RuntimeException("Deployment Descriptor not found") 
+      }
+      return descriptor
+    }
 }

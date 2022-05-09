@@ -1,8 +1,4 @@
-def loadDeploymentDescriptor() {
-    return 'algo'
-}
-
-def call(Map params = [:]){
+def call(Map params = [:], String timeout = 1){
     def utilities = new tools.Utilities(this, params)
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
@@ -16,7 +12,7 @@ def call(Map params = [:]){
     String saasPath = 'saas-universe'
     String deploymentDescriptorPath = 'deploymentDescriptor.json'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
-        timeout(time: 1, unit: 'MINUTES') {
+        timeout(time: timeout, unit: 'MINUTES') {
         node('cloner') {
             dir('build') {
                 stage("Deploy Service on EOS") {
