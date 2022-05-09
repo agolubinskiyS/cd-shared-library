@@ -21,16 +21,14 @@ def call(Map params = [:], timeoutMinutes = 1){
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
 
-                    println(utilities.loadDeploymentDescriptor(deploymentDescriptorPath))
-                    // def exists = fileExists 'deploymentDescriptor.json'
-                    // if (exists) {
-                    //     descriptor = readFile(file:'deploymentDescriptor.json')
-                    // } else if (params.deploymentDescriptor != null) {
-                    //     descriptor = params.deploymentDescriptor
-                    // }
-                    // else {
-                    //     error 'Deployment Descriptor not found'    
-                    // }
+                    if (fileExists deploymentDescriptorPath) {
+                        descriptor = readFile(file: deploymentDescriptorPath)
+                    } else if (params.deploymentDescriptor != null) {
+                        descriptor = params.deploymentDescriptor
+                    }
+                    else {
+                        error 'Deployment Descriptor not found'    
+                    }
                     
                     
 
