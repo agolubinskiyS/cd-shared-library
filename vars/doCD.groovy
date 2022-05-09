@@ -28,7 +28,7 @@ def call(Map params = [:]){
                     String image = MODULE + ":" + INTERNAL_VERSION
 
 
-                    serviceDescriptorPath = 'car'
+                    // serviceDescriptorPath = 'car'
                     serviceDescriptorPath = serviceDescriptorPath ?: utilities.getLatestJson()
 
                     println(serviceDescriptorPath)
