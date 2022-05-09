@@ -1,5 +1,5 @@
 def call(Map params = [:], timeoutMinutes = 1){
-    def utilities = new tools.Utilities(this, params)
+    def api = new tools.CCTapi(this, params)
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
 
@@ -18,7 +18,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     loadScripts(scripts)
                     assertParams(params)
                     sh("ls -lha")
-                    serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
+                    serviceDescriptorPath = params.serviceDescriptorPath ?: api.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
                     
 
@@ -35,11 +35,11 @@ def call(Map params = [:], timeoutMinutes = 1){
                         serviceId = params.serviceId 
                         deploymentDescriptor = getDeploymentDescriptor(serviceId)
                     } 
-                    if utilities.isNullOrEmpty(serviceId) { error "serviceID not provided." }
-                    if utilities.isNullOrEmpty(deploymentDescriptor) { error "DeploymentDescriptor not found." }
+                    if api.isNullOrEmpty(serviceId) { error "serviceID not provided." }
+                    if api.isNullOrEmpty(deploymentDescriptor) { error "DeploymentDescriptor not found." }
 
                     deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
-                    serviceId = serviceId ?: utilities.getServiceId(deploymentDescriptor)
+                    serviceId = serviceId ?: api.getServiceId(deploymentDescriptor)
 
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                    
@@ -53,7 +53,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // serviceDescriptorPath = 'car'
 
 
-                    // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
+                    // api.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
                     // def exists = fileExists 'deploymentDescriptor.json'
                     // if (exists) {
@@ -64,21 +64,21 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // else {
                     //     error 'Deployment Descriptor not found'    
                     // }
-                    // utilities.updateServiceDescriptor(serviceDescriptor)
+                    // api.updateServiceDescriptor(serviceDescriptor)
                     // descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
-                    // serviceId = utilities.getServiceId(descriptor)
+                    // serviceId = api.getServiceId(descriptor)
                     
                     
                     // withCredentials([usernamePassword(credentialsId:'CREDENTIALS_SOLUTIONS_YANKEE_CCT-API', passwordVariable: 'Password', usernameVariable: 'Username')]) {
-                    //     utilities.login(Username, Password)
+                    //     api.login(Username, Password)
                     // }
 
-                    // utilities.updateServiceDescriptor(serviceDescriptor)
+                    // api.updateServiceDescriptor(serviceDescriptor)
 
-                    // if (utilities.getDeployByServiceDeployId(serviceId) == '200') {
-                    //     utilities.updateService(descriptor, serviceId)
+                    // if (api.getDeployByServiceDeployId(serviceId) == '200') {
+                    //     api.updateService(descriptor, serviceId)
                     // } else { 
-                    //     utilities.publishApplication(descriptor) 
+                    //     api.publishApplication(descriptor) 
                     // }
                 }
            }

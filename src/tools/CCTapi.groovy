@@ -1,14 +1,14 @@
 package tools
 // package src.tools
 
-class Utilities implements Serializable {
+class CCTapi implements Serializable {
 
     def script
     String cookie
     String command
     Map params = [:]
 
-    Utilities(script, params) {
+    CCTapi(script, params) {
       this.script = script
       command = """
       . ./cct-api.sh &&
