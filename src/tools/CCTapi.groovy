@@ -68,7 +68,7 @@ class CCTapi implements Serializable {
 
     def getServiceStatus(String serviceId, Integer retries, Integer interval) {
         for (int i = 0; i < retries; i++) {
-            sh "echo Hello ${i} ${serviceId}"
+            script.sh("echo Hello ${i} ${serviceId}")
             sleep interval
         }
         return 'OK'
