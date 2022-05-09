@@ -19,7 +19,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     loadScripts(scripts)
                     assertParams(params)
                     sh("ls -lha")
-                    serviceDescriptorPath = params.serviceDescriptorPath ?: api.getLatestJson(saasPath)
+                    serviceDescriptorPath = params.serviceDescriptorPath ?: utils.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
                     
 
