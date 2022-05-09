@@ -82,7 +82,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // }
                 }
                 stage("get status") {
-                    getServiceStatus(serviceId, 4, 1)
+                    api.getServiceStatus(serviceId, 4, 1)
                 }
            }
         }
