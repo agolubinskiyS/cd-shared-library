@@ -63,8 +63,8 @@ class Utilities implements Serializable {
     }
 
     def getLatestJson(String saasPath) {
-      return script.sh(returnStdout: true, script: "ls" ).trim().toString()
-      // return saasPath + '/' + script.sh(returnStdout: true, script: "#!/bin/bash ls " +  saasPath + " -t1 | egrep .json  | head -n 1" ).trim().toString()
+      // return script.sh(returnStdout: true, script: "ls saas-ui" ).trim().toString()
+      return saasPath + '/' + script.sh(returnStdout: true, script: "ls " +  saasPath + " -t1 | egrep .json  | head -n 1" ).trim().toString()
     }
 
 }
