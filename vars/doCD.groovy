@@ -16,7 +16,12 @@ def call(Map params = [:]){
                 stage("Deploy Service on EOS") {
                     loadScripts(scripts)
                     assertParams(params)
+                    serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
+
+                    
                     println(params)
+
+
                     // for (entry in params) {
                     //     println "KEY: $entry.key = Value: $entry.value"
                     // }
@@ -30,9 +35,8 @@ def call(Map params = [:]){
 
 
                     // serviceDescriptorPath = 'car'
-                    serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
 
-                    println(serviceDescriptorPath)
+
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
                     // def exists = fileExists 'deploymentDescriptor.json'
