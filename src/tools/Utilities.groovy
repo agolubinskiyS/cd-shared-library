@@ -72,7 +72,7 @@ class Utilities implements Serializable {
         descriptor = params.deploymentDescriptor
       }
       else if (file.exists()) {
-        descriptor = readFile(file: deploymentDescriptorPath)
+        descriptor = file.readFile(file: deploymentDescriptorPath)
       } else { 
         throw new RuntimeException("Deployment Descriptor not found") 
       }
