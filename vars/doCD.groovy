@@ -1,4 +1,4 @@
-def call(Map params = [:], Integer timeout = 1){
+def call(Map params = [:], timeoutMinutes = 1){
     def utilities = new tools.Utilities(this, params)
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
@@ -12,7 +12,7 @@ def call(Map params = [:], Integer timeout = 1){
     String saasPath = 'saas-universe'
     String deploymentDescriptorPath = 'deploymentDescriptor.json'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
-        timeout(time: timeout, unit: 'MINUTES') {
+        timeout(time: timeoutMinutes, unit: 'MINUTES') {
         node('cloner') {
             dir('build') {
                 stage("Deploy Service on EOS") {
