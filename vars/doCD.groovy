@@ -5,6 +5,7 @@ def call(Map params = [:]){
     String descriptor
     String serviceStatus
     String serviceId
+    String serviceDescriptorPath
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
@@ -23,6 +24,10 @@ def call(Map params = [:]){
                     String INTERNAL_VERSION = 'Version'    
 
                     String image = MODULE + ":" + INTERNAL_VERSION
+
+
+                    
+                    serviceDescriptorPath ? serviceDescriptorPath : 'algo'
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
 
                     // def exists = fileExists 'deploymentDescriptor.json'
