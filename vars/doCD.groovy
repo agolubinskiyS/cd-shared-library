@@ -24,11 +24,12 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // println(WORKSPACE)
                     // println(utilities.loadDeploymentDescriptor(WORKSPACE +"/"+deploymentDescriptorPath))
                     def exists = fileExists "$deploymentDescriptorPath"
-                    if (exists) {
-                        descriptor = readFile(file:"$deploymentDescriptorPath")
-                    } else if (params.deploymentDescriptor != null) {
+                    if (params.deploymentDescriptor != null) {
                         descriptor = params.deploymentDescriptor
                     }
+                    else if (exists) {
+                        descriptor = readFile(file:"$deploymentDescriptorPath")
+                    } 
                     else {
                         error 'Deployment Descriptor not found'    
                     }
