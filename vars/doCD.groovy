@@ -27,7 +27,7 @@ def call(Map params = [:]){
 
 
 
-                    serviceDescriptorPath = serviceDescriptorPath ? serviceDescriptorPath : 'algo'
+                    serviceDescriptorPath ? serviceDescriptorPath : 'algo'
 
                     println(serviceDescriptorPath)
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
