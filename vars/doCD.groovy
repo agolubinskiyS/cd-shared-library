@@ -1,11 +1,14 @@
+import groovy.json.JsonOutput
+
 def call(Map params = [:], timeoutMinutes = 1){
     def utilities = new tools.Utilities(this, params)
-    
+    def j = new groovy.json.JsonOutput
+
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
 
 
-    String descriptor
+    String deploymentDescriptor
     String serviceStatus
     String serviceId
     String serviceDescriptorPath
@@ -21,19 +24,28 @@ def call(Map params = [:], timeoutMinutes = 1){
                     sh("ls -lha")
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
-                    // println(WORKSPACE)
-                    // println(utilities.loadDeploymentDescriptor(WORKSPACE +"/"+deploymentDescriptorPath))
-                    def exists = fileExists "$deploymentDescriptorPath"
-                    if (params.deploymentDescriptor != null) {
-                        descriptor = params.deploymentDescriptor
+                    serviceId = params.serviceId ?: ''
+
+                    def descriptorExists = fileExists "$deploymentDescriptorPath"
+
+                    try {
+                        if (params.deploymentDescriptor != null) {
+                            deploymentDescriptor = params.deploymentDescriptor
+                        }
+                        else if (descriptorExists) {
+                            deploymentDescriptor = readFile(file:"$deploymentDescriptorPath")
+                        }
+                        else {
+                            if (utilities.isNullOrEmpty(serviceId)) { error "serviceID not provided." }
+
+                        } 
                     }
-                    else if (exists) {
-                        descriptor = readFile(file:"$deploymentDescriptorPath")
-                    } 
-                    else {
-                        error 'Deployment Descriptor not found'    
+                    catch (error) {
+                        error "Deployment Descriptor not found. Error code: ${err}"
                     }
-                    descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
+                    
+                    deploymentDescriptor = j.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
+                    serviceId = utilities.getServiceId(descriptor)
 
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    
