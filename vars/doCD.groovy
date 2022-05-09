@@ -1,4 +1,4 @@
-def call(Map params = [:], String timeout = 1){
+def call(Map params = [:], Integer timeout = 1){
     def utilities = new tools.Utilities(this, params)
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
