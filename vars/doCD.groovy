@@ -21,18 +21,18 @@ def call(Map params = [:], timeoutMinutes = 1){
                     sh("ls -lha")
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
-                    println(WORKSPACE)
-                    println(utilities.loadDeploymentDescriptor(WORKSPACE +"/"+deploymentDescriptorPath))
-                    // def exists = fileExists 'deploymentDescriptor.json'
-                
-                    
-
-
-                    // for (entry in params) {
-                    //     println "KEY: $entry.key = Value: $entry.value"
-                    // }
-                    // serviceDescriptor = readFile(file: 'saas-universe/maintenance-core-default.json')
-                    // serviceDescriptor = groovy.json.JsonOutput.toJson(serviceDescriptor.replace("\n", "").replace(" ", "").trim())
+                    // println(WORKSPACE)
+                    // println(utilities.loadDeploymentDescriptor(WORKSPACE +"/"+deploymentDescriptorPath))
+                    def exists = fileExists "$deploymentDescriptorPath"
+                    if (exists) {
+                        descriptor = readFile(file:"$deploymentDescriptorPath")
+                    } else if (params.deploymentDescriptor != null) {
+                        descriptor = params.deploymentDescriptor
+                    }
+                    else {
+                        error 'Deployment Descriptor not found'    
+                    }
+                    descriptor = groovy.json.JsonOutput.toJson(descriptor.replace("\n", "").replace(" ", "").trim())
 
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    

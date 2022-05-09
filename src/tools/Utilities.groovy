@@ -66,16 +66,16 @@ class Utilities implements Serializable {
       return saasPath + '/' + script.sh(returnStdout: true, script: "ls " +  saasPath + " -t1 | egrep .json  | head -n 1" ).trim().toString()
     }
     
-    def loadDeploymentDescriptor(String deploymentDescriptorPath) {
-      def file = new File(deploymentDescriptorPath)
-      if (params.deploymentDescriptor != null) {
-        descriptor = params.deploymentDescriptor
-      }
-      else if (file.exists()) {
-        descriptor = file.readFileString(deploymentDescriptorPath)
-      } else { 
-        throw new RuntimeException("Deployment Descriptor not found") 
-      }
-      return descriptor
-    }
+    // def loadDeploymentDescriptor(String deploymentDescriptorPath) {
+    //   def file = new File(deploymentDescriptorPath)
+    //   if (params.deploymentDescriptor != null) {
+    //     descriptor = params.deploymentDescriptor
+    //   }
+    //   else if (file.exists()) {
+    //     descriptor = file.readFileString(deploymentDescriptorPath)
+    //   } else { 
+    //     throw new RuntimeException("Deployment Descriptor not found") 
+    //   }
+    //   return descriptor
+    // }
 }
