@@ -1,5 +1,3 @@
-import groovy.json.JsonOutput
-
 def call(Map params = [:], timeoutMinutes = 1){
     def utilities = new tools.Utilities(this, params)
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
@@ -22,28 +20,29 @@ def call(Map params = [:], timeoutMinutes = 1){
                     sh("ls -lha")
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
-                    serviceId = params.serviceId ?: ''
+                    
 
                     def descriptorExists = fileExists "$deploymentDescriptorPath"
 
-                    try {
-                        if (params.deploymentDescriptor != null) {
-                            deploymentDescriptor = params.deploymentDescriptor.replace("\n", "").replace(" ", "").trim()
-                        }
-                        else if (descriptorExists) {
-                            deploymentDescriptor = readFile(file:"$deploymentDescriptorPath").replace("\n", "").replace(" ", "").trim()
-                        }
-                        else {
-                            if (utilities.isNullOrEmpty(serviceId)) { error "serviceID not provided." }
+              
+                    if (params.deploymentDescriptor != null) {
+                        deploymentDescriptor = params.deploymentDescriptor     
+                    }
+                    else if (descriptorExists) {
+                        deploymentDescriptor = readFile(file:"$deploymentDescriptorPath")
+                    }
+                    else {
+                        serviceId = params.serviceId 
+                        deploymentDescriptor = getDeploymentDescriptor(serviceId)
+                    } 
+                    if utilities.isNullOrEmpty(serviceId) { error "serviceID not provided." }
+                    if utilities.isNullOrEmpty(deploymentDescriptor) { error "DeploymentDescriptor not found." }
 
-                        } 
-                    }
-                    catch (error) {
-                        error "Deployment Descriptor not found. Error code: ${err}"
-                    }
-                    
+                    deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
+                    serviceId = serviceId ?: utilities.getServiceId(deploymentDescriptor)
+
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
-                    serviceId = utilities.getServiceId(deploymentDescriptor)
+                   
                     println(serviceId)
                     String MODULE = 'MODULO'
                     String INTERNAL_VERSION = 'Version'    
