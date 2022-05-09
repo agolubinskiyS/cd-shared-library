@@ -2,8 +2,6 @@ import groovy.json.JsonOutput
 
 def call(Map params = [:], timeoutMinutes = 1){
     def utilities = new tools.Utilities(this, params)
-    def j = new 
-
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
 
