@@ -18,7 +18,7 @@ def call(Map params = [:]){
                     loadScripts(scripts)
                     assertParams(params)
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
-                    deploymentDescriptorPath = params.serviceDescriptorPath ?: deploymentDescriptorPath
+                    deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
                     println(deploymentDescriptorPath)
                     // def exists = fileExists 'deploymentDescriptor.json'
                     // if (exists) {
