@@ -67,7 +67,7 @@ class Utilities implements Serializable {
     }
     
     def loadDeploymentDescriptor(String deploymentDescriptorPath) {
-      def file = new File('/var/jenkins_home/workspace/CCT-prueba/deploymentDescriptor.json')
+      def file = new File(deploymentDescriptorPath)
       if (params.deploymentDescriptor != null) {
         descriptor = params.deploymentDescriptor
       }
