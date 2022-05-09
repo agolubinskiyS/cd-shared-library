@@ -82,10 +82,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // }
                 }
                 stage("get status") {
-                for (int i = 0; i < retries; i++) {
-                    sh "echo Hello ${i} ${serviceId}"
-                    sleep 2
-                }
+                    getServiceStatus(serviceId, 4, 1)
                 }
            }
         }
