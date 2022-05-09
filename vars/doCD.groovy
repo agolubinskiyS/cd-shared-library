@@ -22,7 +22,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
                     deploymentDescriptorPath = params.deploymentDescriptorPath ?: deploymentDescriptorPath
 
-                    println(utilities.loadDeploymentDescriptor(deploymentDescriptorPath))
+                    println(utilities.loadDeploymentDescriptor(WORKSPACE + deploymentDescriptorPath))
                     // def exists = fileExists 'deploymentDescriptor.json'
                 
                     
