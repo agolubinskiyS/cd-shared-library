@@ -9,6 +9,7 @@ def call(Map params = [:]){
     String serviceId
     String serviceDescriptorPath
     String saasPath = 'saas-universe'
+    String deploymentDescriptorPath = 'deploymentDescriptor.json'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
@@ -17,9 +18,19 @@ def call(Map params = [:]){
                     loadScripts(scripts)
                     assertParams(params)
                     serviceDescriptorPath = params.serviceDescriptorPath ?: utilities.getLatestJson(saasPath)
-
+                    deploymentDescriptorPath = params.serviceDescriptorPath ?: deploymentDescriptorPath
+                    println(deploymentDescriptorPath)
+                    // def exists = fileExists 'deploymentDescriptor.json'
+                    // if (exists) {
+                    //     descriptor = readFile(file:'deploymentDescriptor.json')
+                    // } else if (params.deploymentDescriptor != null) {
+                    //     descriptor = params.deploymentDescriptor
+                    // }
+                    // else {
+                    //     error 'Deployment Descriptor not found'    
+                    // }
                     
-                    println(params)
+                    
 
 
                     // for (entry in params) {
