@@ -3,9 +3,6 @@ def call(Map params = [:]){
     
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
-    def getLatestJson () {
-        return 'algo'
-    }
 
     String descriptor
     String serviceStatus
@@ -32,7 +29,7 @@ def call(Map params = [:]){
 
 
                     serviceDescriptorPath = 'car'
-                    serviceDescriptorPath = serviceDescriptorPath ?: getLatestJson()
+                    serviceDescriptorPath = serviceDescriptorPath ?: utilities.getLatestJson()
 
                     println(serviceDescriptorPath)
                     // utilities.parametrizeImage(MODULE + ":" + INTERNAL_VERSION)    
