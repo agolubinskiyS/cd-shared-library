@@ -82,16 +82,16 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // }
                 }
                 stage("get status") {
+                    def traditional_int_for_loop(retries) {
+                        sh "echo Going to echo a list"
+                        for (int i = 0; i < retries; i++) {
+                            sh "echo Hello ${i} ${serviceId}"
+                        }
+                    }
                     traditional_int_for_loop(retries)
                 }
            }
         }
         }
     // }
-            def traditional_int_for_loop(retries) {
-            sh "echo Going to echo a list"
-            for (int i = 0; i < retries; i++) {
-                sh "echo Hello ${i} ${serviceId}"
-            }
-        }
 }
