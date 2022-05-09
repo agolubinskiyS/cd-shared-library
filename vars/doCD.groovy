@@ -5,7 +5,7 @@ def call(Map params = [:]){
     String descriptor
     String serviceStatus
     String serviceId
-    String serviceDescriptorPath
+    String serviceDescriptorPath = 'cra'
     // podTemplate(containers: [containerTemplate(name: "curl", image: "dwdraju/alpine-curl-jq", command: "sleep", args: "9999999")]) {
         timeout(time: 1, unit: 'MINUTES') {
         node('cloner') {
