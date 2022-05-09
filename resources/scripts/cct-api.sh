@@ -81,6 +81,3 @@ parametrizeImage() {
    saas-universe/maintenance-core-default.json > "$tmp" && mv "$tmp" saas-universe/maintenance-core-default.json
 }
 
- getLatestJson() {
-     return 'algo'
- }

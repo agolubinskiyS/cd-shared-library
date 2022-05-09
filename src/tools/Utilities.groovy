@@ -61,4 +61,9 @@ class Utilities implements Serializable {
       command = command + """image=$image """
       script.sh(returnStdout: true, script: "#!/bin/bash " + command + " parametrizeImage")
     }
+
+    def getLatestJson() {
+     return 'algo'
+    }
+
 }
