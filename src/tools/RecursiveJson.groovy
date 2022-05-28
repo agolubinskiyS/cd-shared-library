@@ -33,7 +33,7 @@ class RecursiveJson {
         }
         }
     }
-    @NonCPS
+    
     void filteredValues(String crude, Boolean value, List filtered) {
         String pattern = /.*\.(.*?)\.ui.visible\.(.*)/   
         def m = crude =~ pattern
