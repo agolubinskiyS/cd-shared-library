@@ -112,6 +112,12 @@ class RecursiveJson {
         return s
     } 
 
+    @NonCPS
+    def getIssueIDs(rawJSON) {
+        def slurper = new JsonSlurper()
+        def json = slurper.parseText(rawJSON)
+        return json.items*.ui
+    }
 }
 
 
