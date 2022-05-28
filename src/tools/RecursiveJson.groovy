@@ -79,7 +79,8 @@ class RecursiveJson {
             pruneDescriptorHelper(a, b, c, descriptorJson)
         }
     }
-
+    
+    @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
         schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
         descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
