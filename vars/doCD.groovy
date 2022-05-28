@@ -42,9 +42,9 @@ def call(Map params = [:], timeoutMinutes = 1){
                    
                     // deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
                     deploymentDescriptorPath = '/var/jenkins_home/workspace/CCT-prueba/build/deploymentDescriptor.json'
-                    deploymentDescriptor = readFile(file: deploymentDescriptorPath)
-
-                    deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim()) 
+                    deploymentDescriptor = readFile(file:"$deploymentDescriptorPath")
+                    
+                    deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor) 
                     writeFile(file: 'nuevo-descriptor.json', text: deploymentDescriptor)
                     // serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
                     serviceId = 's00s'
