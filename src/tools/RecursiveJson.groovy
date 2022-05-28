@@ -99,22 +99,15 @@ class RecursiveJson {
         schemaJson = readJsonMap(schemaJsonPath)
         descriptorJson = readJsonMap(descriptorJsonPath)
 
-        if(schemaJson instanceof groovy.json.internal.LazyMap) {
-            return new HashMap<>(schemaJson)
-        }
-        if(schemaJson instanceof groovy.json.internal.LazyMap) {
-            return new HashMap<>(schemaJson)
-        }
-        
-        toMap(schemaJson.properties, "data", result)
+        // toMap(schemaJson.properties, "data", result)
 
-        result.each{ k, v ->
-            k.contains('visible') ? filteredValues(k, v, filtered) : null
-        }
+        // result.each{ k, v ->
+        //     k.contains('visible') ? filteredValues(k, v, filtered) : null
+        // }
 
-        pruneDescriptor(filtered, descriptorJson)
-        def resultjson = JsonOutput.toJson(descriptorJson)
-        String s = resultjson
+        // pruneDescriptor(filtered, descriptorJson)
+        // def resultjson = JsonOutput.toJson(descriptorJson)
+        String s = descriptorJson
 
         return s
     } 
