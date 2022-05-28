@@ -50,7 +50,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     serviceDescriptorPath = '/var/jenkins_home/workspace/CCT-prueba/build/saas-universe/maintenance-core-default.json'
 
                     // def serviceDescriptor = readJSON file: "$serviceDescriptorPath"
-                    print(p.runParseJson(serviceDescriptorPath, '/var/jenkins_home/workspace/CCT-prueba/build/deploymentDescriptor.json'))
+                    print(p.runParseJson(serviceDescriptorPath, '/var/jenkins_home/workspace/CCT-prueba/build/nuevo-descriptor.json'))
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
 
