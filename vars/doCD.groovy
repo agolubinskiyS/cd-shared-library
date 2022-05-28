@@ -45,7 +45,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                     // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
-                    p.runParseJson('saas-universe/schema-eureka.json', 'saas-universe/descriptor-api.json')
+                    p.runParseJson('schema-eureka.json', 'descriptor-api.json')
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
 
