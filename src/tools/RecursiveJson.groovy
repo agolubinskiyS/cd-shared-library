@@ -85,17 +85,17 @@ class RecursiveJson {
     @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
         schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
-        descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
+        // descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
 
-        toMap(schemaJson.properties, "data", result)
+        // toMap(schemaJson.properties, "data", result)
 
-        result.each{ k, v ->
-            k.contains('visible') ? filteredValues(k, v, filtered) : null
-        }
+        // result.each{ k, v ->
+        //     k.contains('visible') ? filteredValues(k, v, filtered) : null
+        // }
 
-        pruneDescriptor(filtered, descriptorJson)
-        def resultjson = JsonOutput.toJson(descriptorJson)
-        String s = JsonOutput.prettyPrint(resultjson)
+        // pruneDescriptor(filtered, descriptorJson)
+        // def resultjson = JsonOutput.toJson(descriptorJson)
+        String s = JsonOutput.prettyPrint(descriptorJson)
 
         return s
     } 
