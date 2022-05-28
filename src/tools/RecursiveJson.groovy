@@ -84,6 +84,7 @@ class RecursiveJson {
 
     @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
+        try {
         schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
         descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
 
@@ -96,7 +97,11 @@ class RecursiveJson {
         pruneDescriptor(filtered, descriptorJson)
         def resultjson = JsonOutput.toJson(descriptorJson)
         String s = resultjson
-
+        }
+        catch (Exception ex) {
+	    	echo ex.getMessage()
+	
+    	}
         return s
     } 
 
