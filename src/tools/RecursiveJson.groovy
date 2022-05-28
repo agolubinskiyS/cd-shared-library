@@ -80,7 +80,10 @@ class RecursiveJson {
         }
     }
 
-    def runParseJson(schemaJson, descriptorJson) {
+    def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
+        schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
+        descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
+
         toMap(schemaJson.properties, "data", result)
 
         result.each{ k, v ->

@@ -45,6 +45,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                     // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
+                    p.runParseJson('schema-eureka.json', 'descriptor-api.json')
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
 
@@ -82,9 +83,9 @@ def call(Map params = [:], timeoutMinutes = 1){
                     //     api.publishApplication(descriptor) 
                     // }
                 }
-                stage("get status") {
-                    api.getServiceStatus(serviceId, 4, 1)
-                }
+                // stage("get status") {
+                //     api.getServiceStatus(serviceId, 4, 1)
+                // }
            }
         }
         }
