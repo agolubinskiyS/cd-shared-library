@@ -100,9 +100,9 @@ class RecursiveJson {
         // def schemaJson = slurper.parseText(schemaJsonPath)
 
         // def descriptorJson = slurper.parseText(descriptorJsonPath)
-        def schemaJson = slurper.parse(new File(schemaJsonPath))
+        def schemaJson = slurper.parseText(schemaJsonPath)
 
-        def descriptorJson = slurper.parse(new File(descriptorJsonPath))
+        def descriptorJson = slurper.parseText(descriptorJsonPath)
 
         toMap(schemaJson.properties, "data", result)
 
