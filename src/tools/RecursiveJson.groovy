@@ -14,7 +14,7 @@ class RecursiveJson {
 
     RecursiveJson() {
     }
-    @NonCPS
+    
     void toMap(Object json, String key, Map result){
         json = [(key): json]
         json.each {k, v ->
