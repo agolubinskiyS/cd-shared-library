@@ -13,7 +13,7 @@ class RecursiveJson {
 
     RecursiveJson() {
     }
-
+    @NonCPS
     void toMap(Object json, String key, Map result){
         json = [(key): json]
         json.each {k, v ->
@@ -32,7 +32,7 @@ class RecursiveJson {
         }
         }
     }
-
+    @NonCPS
     void filteredValues(String crude, Boolean value, List filtered) {
         String pattern = /.*\.(.*?)\.ui.visible\.(.*)/   
         def m = crude =~ pattern
@@ -40,6 +40,7 @@ class RecursiveJson {
         filtered.add(f)
     }
 
+    @NonCPS
     void pruneDescriptorHelper(String a, String b, Boolean c, Map descriptorJson) {
         //NEED TO FIND b in fields and verify that b + c is the same in the descriptorJson othewise delete a
         if (descriptorJson instanceof Map) {
@@ -73,13 +74,14 @@ class RecursiveJson {
             return
         }
     }
-
+    
+    @NonCPS
     void pruneDescriptor(List filtered, Object descriptorJson){
         filtered.each { a, b, c ->
             pruneDescriptorHelper(a, b, c, descriptorJson)
         }
     }
-    
+
     @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
         schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
