@@ -7,8 +7,8 @@ import groovy.json.JsonSlurperClassic
 
 class RecursiveJson {
 
-    def schemaJson
-    def descriptorJson
+    // def schemaJson
+    // def descriptorJson
     List filtered = []
     Map<String, String> result = new LinkedHashMap();
 
@@ -99,7 +99,7 @@ class RecursiveJson {
         // schemaJson = getJson(schemaJsonPath)
         // descriptorJson = getJson(descriptorJsonPath)
         def slurper = new JsonSlurper()
-        schemaJson = slurper.parseText(schemaJsonPath)
+        def schemaJson = slurper.parseText(schemaJsonPath)
         // toMap(schemaJson.properties, "data", result)
 
         // result.each{ k, v ->
