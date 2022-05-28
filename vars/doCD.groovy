@@ -46,7 +46,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
 
-                    print(p.runParseJson(serviceDescriptorPath, '/var/jenkins_home/workspace/CCT-prueba/build/descriptor-api.json'))
+                    print(p.runParseJson(serviceDescriptorPath, '/var/jenkins_home/workspace/CCT-prueba/build/deploymentDescriptor.json'))
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
 
