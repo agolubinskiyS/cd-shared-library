@@ -95,7 +95,7 @@ class RecursiveJson {
 
         pruneDescriptor(filtered, descriptorJson)
         def resultjson = JsonOutput.toJson(descriptorJson)
-        String s = JsonOutput.prettyPrint(resultjson)
+        String s = resultjson
 
         return s
     } 
