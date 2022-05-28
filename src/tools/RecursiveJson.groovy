@@ -9,8 +9,7 @@ class RecursiveJson {
     def schemaJson
     def descriptorJson
     List filtered = []
-    // Map<String, String> result = new LinkedHashMap();
-    def result
+    Map<String, String> result = new LinkedHashMap();
 
     RecursiveJson() {
     }
