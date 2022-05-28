@@ -97,9 +97,12 @@ class RecursiveJson {
     @NonCPS
     def runParseJson(schemaJsonPath, descriptorJsonPath) {
         def slurper = new JsonSlurper()
-        def schemaJson = slurper.parseText(schemaJsonPath)
+        // def schemaJson = slurper.parseText(schemaJsonPath)
 
-        def descriptorJson = slurper.parseText(descriptorJsonPath)
+        // def descriptorJson = slurper.parseText(descriptorJsonPath)
+        def schemaJson = slurper.parse(schemaJsonPath)
+
+        def descriptorJson = slurper.parse(descriptorJsonPath)
 
         toMap(schemaJson.properties, "data", result)
 
