@@ -2,6 +2,7 @@ package tools
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
 import groovy.json.JsonBuilder 
+import groovy.json.JsonSlurperClassic 
 
 
 class RecursiveJson {
@@ -84,8 +85,8 @@ class RecursiveJson {
 
     @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
-        schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
-        descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
+        schemaJson = new JsonSlurperClassic().parseText(new File(schemaJsonPath))
+        descriptorJson = new JsonSlurperClassic().parseText(new File(descriptorJsonPath))
 
         toMap(schemaJson.properties, "data", result)
 
