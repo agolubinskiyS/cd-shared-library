@@ -1,6 +1,7 @@
 def call(Map params = [:], timeoutMinutes = 1){
     def api = new tools.CCTapi(this, params)
     def utils = new tools.Utilities(this)
+    def p = new tools.RecursiveJson()
     def scripts = ['cct-api.sh', 'sso_login-2.4.0.sh', 'login_mock.sh', 'login.sh']
 
 
@@ -42,7 +43,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
                     serviceId = 's00s'
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
-                   
+                    // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
