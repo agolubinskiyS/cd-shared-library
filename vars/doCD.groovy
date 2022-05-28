@@ -53,7 +53,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     serviceDescriptor = readFile(file:"$serviceDescriptorPath")
                     deploymentDescriptor = readFile(file:"/var/jenkins_home/workspace/CCT-prueba/build/descriptor.json")
                     // def serviceDescriptor = readJSON file: "$serviceDescriptorPath"
-                    print(p.runParseJson(serviceDescriptorPath, deploymentDescriptor))
+                    print(p.runParseJson(serviceDescriptor, deploymentDescriptor))
                     // String MODULE = 'MODULO'
 
 
