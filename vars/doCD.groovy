@@ -40,6 +40,8 @@ def call(Map params = [:], timeoutMinutes = 1){
                     } 
                    
                     deploymentDescriptor =  deploymentDescriptor.replace("\n", "").replace(" ", "").trim() 
+
+                    writeFile(file: 'nuevo-descriptor.json', text: deploymentDescriptor)
                     // serviceId = serviceId ?: utils.getServiceId(deploymentDescriptor)
                     serviceId = 's00s'
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
