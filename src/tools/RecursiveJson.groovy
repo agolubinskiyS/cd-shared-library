@@ -88,7 +88,13 @@ class RecursiveJson {
         schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
         descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
 
-
+        if(schemaJson instanceof groovy.json.internal.LazyMap) {
+            return new HashMap<>(schemaJson)
+        }
+        if(schemaJson instanceof groovy.json.internal.LazyMap) {
+            return new HashMap<>(schemaJson)
+        }
+        
         toMap(schemaJson.properties, "data", result)
 
         result.each{ k, v ->
