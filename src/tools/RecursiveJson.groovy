@@ -41,7 +41,7 @@ class RecursiveJson {
         filtered.add(f)
     }
 
-    @NonCPS
+    
     void pruneDescriptorHelper(String a, String b, Boolean c, Map descriptorJson) {
         //NEED TO FIND b in fields and verify that b + c is the same in the descriptorJson othewise delete a
         if (descriptorJson instanceof Map) {
@@ -76,7 +76,7 @@ class RecursiveJson {
         }
     }
     
-    @NonCPS
+    
     void pruneDescriptor(List filtered, Object descriptorJson){
         filtered.each { a, b, c ->
             pruneDescriptorHelper(a, b, c, descriptorJson)
