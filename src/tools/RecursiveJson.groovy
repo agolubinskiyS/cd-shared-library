@@ -85,7 +85,7 @@ class RecursiveJson {
 
     @NonCPS
     def readJsonMap(String path) {
-        def object = new JsonSlurper().parse(new File(path))
+        def object = new JsonSlurper().parseText(path)
         if(object instanceof groovy.json.internal.LazyMap) {
             return new HashMap<>(object)
         }
