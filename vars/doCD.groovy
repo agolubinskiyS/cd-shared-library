@@ -45,7 +45,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                     // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
-                    p.runParseJson('build/schema-eureka.json', 'build/descriptor-api.json')
+                    p.runParseJson('/var/jenkins_home/workspace/CCT-prueba/build/schema-eureka.json', '/var/jenkins_home/workspace/CCT-prueba/build/descriptor-api.json')
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
 
