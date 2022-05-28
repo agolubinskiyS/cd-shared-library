@@ -10,7 +10,7 @@ class RecursiveJson {
     def schemaJson
     def descriptorJson
     List filtered = []
-    // Map<String, String> result = new LinkedHashMap();
+    Map<String, String> result = new HashMap();
 
     RecursiveJson() {
     }
@@ -94,7 +94,7 @@ class RecursiveJson {
         if(schemaJson instanceof groovy.json.internal.LazyMap) {
             return new HashMap<>(schemaJson)
         }
-
+        
         toMap(schemaJson.properties, "data", result)
 
         result.each{ k, v ->
