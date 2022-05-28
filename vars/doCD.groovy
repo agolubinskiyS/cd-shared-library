@@ -32,6 +32,7 @@ def call(Map params = [:], timeoutMinutes = 1){
                         deploymentDescriptor = params.deploymentDescriptor     
                     }
                     else if (descriptorExists) {
+                        deploymentDescriptorPath = '/var/jenkins_home/workspace/CCT-prueba/build/deploymentDescriptor.json'
                         deploymentDescriptor = readFile(file:"$deploymentDescriptorPath")
                     }
                     else {
