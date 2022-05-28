@@ -98,7 +98,7 @@ class RecursiveJson {
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
         schemaJson = readJsonMap(schemaJsonPath)
         descriptorJson = readJsonMap(descriptorJsonPath)
-
+        
         // toMap(schemaJson.properties, "data", result)
 
         // result.each{ k, v ->
@@ -107,9 +107,9 @@ class RecursiveJson {
 
         // pruneDescriptor(filtered, descriptorJson)
         // def resultjson = JsonOutput.toJson(descriptorJson)
-        String s = descriptorJson
+        // String s = resultjson
 
-        return s
+        // return s
     } 
 
 }
