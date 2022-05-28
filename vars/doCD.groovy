@@ -45,7 +45,9 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // deploymentDescriptor = groovy.json.JsonOutput.toJson(deploymentDescriptor.replace("\n", "").replace(" ", "").trim())
                     // print(p.runParseJson(serviceDescriptorPath, deploymentDescriptorPath))
                     println(serviceId)
+                    serviceDescriptorPath = '/var/jenkins_home/workspace/CCT-prueba/build/maintenance-core-default.json'
 
+                    // def serviceDescriptor = readJSON file: "$serviceDescriptorPath"
                     print(p.runParseJson(serviceDescriptorPath, '/var/jenkins_home/workspace/CCT-prueba/build/deploymentDescriptor.json'))
                     // String MODULE = 'MODULO'
                     // String INTERNAL_VERSION = 'Version'    
