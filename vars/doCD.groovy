@@ -56,8 +56,8 @@ def call(Map params = [:], timeoutMinutes = 1){
                     // String MODULE = 'MODULO'
 
 
-                    // print(p.runParseJson(serviceDescriptor, deploymentDescriptor))
-                    print(p.getJson(deploymentDescriptor))
+                    print(p.runParseJson(serviceDescriptor, deploymentDescriptor))
+                    // print(p.getIssueIDs(deploymentDescriptor))
                     // String INTERNAL_VERSION = 'Version'    
 
                     // String image = MODULE + ":" + INTERNAL_VERSION
