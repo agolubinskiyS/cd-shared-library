@@ -10,7 +10,7 @@ class RecursiveJson {
     def schemaJson
     def descriptorJson
     List filtered = []
-    Map<String, String> result = new HashMap();
+    Map<String, String> result = new LinkedHashMap();
 
     RecursiveJson() {
     }
@@ -84,9 +84,20 @@ class RecursiveJson {
     }
 
     @NonCPS
+    def readJsonMap(String path) {
+        def object = new JsonSlurper().parse(new File(path))
+        if(object instanceof groovy.json.internal.LazyMap) {
+            return new HashMap<>(object)
+        }
+        return object
+    }
+
+
+
+    @NonCPS
     def runParseJson(String schemaJsonPath, String descriptorJsonPath) {
-        schemaJson = new JsonSlurper().parse(new File(schemaJsonPath))
-        descriptorJson = new JsonSlurper().parse(new File(descriptorJsonPath))
+        schemaJson = readJsonMap(schemaJsonPath)
+        descriptorJson = readJsonMap(descriptorJsonPath)
 
         if(schemaJson instanceof groovy.json.internal.LazyMap) {
             return new HashMap<>(schemaJson)
